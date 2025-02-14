@@ -2,8 +2,6 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-
-
 export async function POST(req: Request) {
     try {
         const { name, email, message } = await req.json();
@@ -28,10 +26,17 @@ export async function POST(req: Request) {
             { message: "Email sent successfully!" },
             { status: 200 }
         );
-    } catch (error: any) {
-        return Response.json(
-            { message: "Failed to send email.", error: error.message },
-            { status: 500 }
-        );
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return Response.json(
+                { message: "Failed to send email.", error: error.message },
+                { status: 500 }
+            );
+        } else {
+            return Response.json(
+                { message: "Failed to send email.", error: String(error) },
+                { status: 500 }
+            );
+        }
     }
 }

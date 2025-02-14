@@ -27,7 +27,7 @@ export default function ContactForm() {
             body: JSON.stringify(formData),
         });
 
-        const result = await response.json();
+        await response.json();
 
         if (response.ok) {
             setStatus("Email sent successfully!");
