@@ -40,8 +40,16 @@ export default function ContactForm() {
     return (
         <section
             id="contact"
-            className="relative min-h-screen flex flex-col justify-center items-center text-center bg-[#111] text-white p-10"
+            className="relative min-h-screen flex flex-col justify-center items-center text-center  text-white p-10"
         >
+            <motion.p
+                className="mt-6 text-s max-w-3xl mx-8"
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3 }}
+            >
+                Get in touch
+            </motion.p>
             <motion.h2
                 className="text-6xl font-extrabold"
                 initial={{ opacity: 0, y: -50 }}
@@ -50,6 +58,7 @@ export default function ContactForm() {
             >
                 CONTACT ME
             </motion.h2>
+
             <form className="mt-8 w-full max-w-lg" onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label className="block text-left text-lg mb-2">Name</label>

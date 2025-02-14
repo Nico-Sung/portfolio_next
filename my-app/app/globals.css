@@ -8,6 +8,23 @@
     --font: "HK Grotesk", sans-serif;
 }
 
+@font-face {
+    font-family: "hk-grotesk-wide";
+    src: url("/fonts/HKGroteskWide-Black.otf") format("otf"),
+        url("/fonts/HKGroteskWide-Bold.otf") format("otf"),
+        url("/fonts/HKGroteskWide-ExtraBold.otf") format("otf"),
+        url("/fonts/HKGroteskWide-Light.otf") format("otf"),
+        url("/fonts/HKGroteskWide-Medium.otf") format("otf"),
+        url("/fonts/HKGroteskWide-Regular.otf") format("otf"),
+        url("/fonts/HKGroteskWide-SemiBold.otf") format("otf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: "hk-grotesk-wide", sans-serif;
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #0a0a0a;

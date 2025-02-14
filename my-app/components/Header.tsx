@@ -23,7 +23,7 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="fixed top-0 left-0 right-0 flex justify-between items-center p-6 text-white bg-transparent"
+            className="fixed top-0 left-0 right-0 flex justify-between items-center p-6 text-white bg-transparent backdrop-blur-md z-[9999]"
         >
             <div className="logo">
                 <Image src="/logo.svg" alt="Logo" width={80} height={80} />

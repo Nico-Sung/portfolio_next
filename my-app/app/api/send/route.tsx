@@ -7,7 +7,7 @@ export async function POST(req: Request) {
         const { name, email, message } = await req.json();
 
         const adminResponse = await resend.emails.send({
-            from: "onboarding@resend.dev",
+            from: "noreply@sungnicolas.fr",
             to: "nicolassung01@gmail.com",
             subject: `New Message from ${name}`,
             text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
         console.log("Admin email sent:", adminResponse);
 
         const userResponse = await resend.emails.send({
-            from: "onboarding@resend.dev",
+            from: "noreply@sungnicolas.fr",
             to: email,
             subject: "Thank you for your message!",
             text: `Hi ${name},\n\nThank you for reaching out! I have received your message and will get back to you as soon as possible.\n\nBest regards,\n Sung Nicolas`,
