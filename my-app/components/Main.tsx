@@ -8,16 +8,14 @@ export default function Main() {
             transition={{ duration: 1 }}
             className="text-center py-64 min-h-screen"
         >
-            <h1 className="text-8xl font-bold font-grotesk">NICOLAS</h1>
+            <h1 className="text-8xl font-bold ">NICOLAS</h1>
             <h1
-                className="text-8xl font-bold font-grotesk"
+                className="text-8xl font-bold "
                 style={{ WebkitTextStroke: "1px white", color: "transparent" }}
             >
                 SUNG
             </h1>
-            <h2 className="text-6xl font-light mt-4 font-grotesk">
-                Full Stack Developer
-            </h2>
+            <h2 className="text-6xl font-light mt-4 ">Full Stack Developer</h2>
         </motion.section>
     );
 }

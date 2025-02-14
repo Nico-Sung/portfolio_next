@@ -18,12 +18,12 @@ export default function Cursor() {
 
     return (
         <motion.div
-            className="fixed pointer-events-none z-50 w-8 h-8 border border-[#CECECE] rounded-full"
+            className="fixed pointer-events-none z-[9999] w-8 h-8 border border-[#CECECE] rounded-full "
             style={{
                 backgroundColor: "transparent",
             }}
             animate={{ x: position.x - 10, y: position.y - 15 }}
-            transition={{ type: "spring", stiffness: 500, damping: 30 }}
+            transition={{ type: "spring", stiffness: 400, damping: 35 }}
         />
     );
 }
