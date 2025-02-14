@@ -43,7 +43,7 @@ export default function ContactForm() {
             className="relative min-h-screen flex flex-col justify-center items-center text-center  text-white p-10"
         >
             <motion.p
-                className="mt-6 text-s max-w-3xl mx-8"
+                className="mt-6 text-s max-w-3xl mx-8 text-gray-400"
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3 }}

@@ -1,23 +1,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
+import handleScroll from "../utils/handleScroll";
 
 export default function Header() {
-    const handleScroll = (
-        e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-        targetId: string
-    ) => {
-        e.preventDefault();
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            const offset =
-                window.innerHeight / 2 - targetElement.offsetHeight / 2;
-            window.scrollTo({
-                top: targetElement.offsetTop - offset,
-                behavior: "smooth",
-            });
-        }
-    };
-
     return (
         <motion.header
             initial={{ opacity: 0 }}
@@ -32,7 +17,7 @@ export default function Header() {
                 <a
                     href="#about-me"
                     onClick={(e) => handleScroll(e, "about-me")}
-                    className="hover:text-gray-400 z-50"
+                    className="hover:text-gray-400 z-50 font-bold"
                 >
                     about me
                 </a>

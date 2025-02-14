@@ -5,6 +5,7 @@ import Main from "@/components/Main";
 import AboutMe from "@/components/AboutMe";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 import { motion, useScroll } from "framer-motion";
 import "swiper/css";
 import { useEffect, useState } from "react";
@@ -40,6 +41,7 @@ export default function Home() {
             <AboutMe />
             <Projects />
             <Contact />
+            <Footer />
         </main>
     );
 }
