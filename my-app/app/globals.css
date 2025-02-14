@@ -5,7 +5,7 @@
 :root {
     --background: #111111;
     --foreground: #171717;
-    --font: "HK Grotesk", sans-serif;
+    font-family: "hk-grotesk-wide", sans-serif;
 }
 
 @font-face {
@@ -35,5 +35,4 @@ body {
 body {
     color: var(--foreground);
     background: var(--background);
-    font-family: var(--font);
-}
+x}
