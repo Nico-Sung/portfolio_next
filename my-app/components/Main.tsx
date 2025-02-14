@@ -6,7 +6,7 @@ export default function Main() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="relative text-center py-32 min-h-screen"
+            className="text-center py-64 min-h-screen"
         >
             <h1 className="text-8xl font-bold font-grotesk">NICOLAS</h1>
             <h1

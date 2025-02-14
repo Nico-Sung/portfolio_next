@@ -1,7 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const projects = [
     {
@@ -37,50 +38,69 @@ const projects = [
 ];
 
 export default function Projects() {
+    const { scrollYProgress } = useScroll();
+    const [scrollValue, setScrollValue] = useState(0);
+
+    useEffect(() => {
+        return scrollYProgress.onChange((latest) => {
+            setScrollValue(latest);
+        });
+    }, [scrollYProgress]);
+
     return (
-        <section id="projects" className="relative">
-            <h2 className="text-8xl pl-10 font-extrabold w-full absolute top-0 left-0 z-0 transform -translate-y-3/4">
-                PROJECTS
-            </h2>
-            <Swiper
-                spaceBetween={30}
-                slidesPerView={3}
-                grabCursor={true}
-                loop={true}
-                centeredSlides={false}
-                className="w-full relative z-10"
+        <section
+            id="projects"
+            className=" min-h-screen flex flex-col justify-center mt-32"
+        >
+            <motion.h2
+                className="text-8xl font-extrabold w-full text-center top-0  transform -translate-x-1/2 z-0"
+                animate={{ y: scrollValue * 100 }}
+                transition={{ duration: 1 }}
             >
-                {projects.map((project, index) => (
-                    <SwiperSlide key={index}>
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            className="relative overflow-hidden rounded-lg"
-                            style={{ paddingBottom: "100%" }}
-                        >
-                            <Image
-                                src={project.image}
-                                alt={project.title}
-                                layout="fill"
-                                objectFit="cover"
-                                className="rounded-md w-full h-full object-cover"
-                            />
+                PROJECTS
+            </motion.h2>
+            <div className="mt-20">
+                {" "}
+                <Swiper
+                    spaceBetween={30}
+                    slidesPerView={3.5}
+                    grabCursor={true}
+                    loop={true}
+                    centeredSlides={false}
+                    className="w-full relative z-10"
+                >
+                    {projects.map((project, index) => (
+                        <SwiperSlide key={index}>
                             <motion.div
-                                initial={{ opacity: 0 }}
-                                whileHover={{ opacity: 1 }}
-                                transition={{ duration: 0.3 }}
-                                className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300 p-6 text-center"
+                                whileHover={{ scale: 1.05 }}
+                                className="relative overflow-hidden rounded-lg"
+                                style={{ paddingBottom: "100%" }}
                             >
-                                <h3 className="text-2xl font-semibold">
-                                    {project.title}
-                                </h3>
-                                <p className="text-gray-400 mt-2">
-                                    {project.description}
-                                </p>
+                                <Image
+                                    src={project.image}
+                                    alt={project.title}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    className="rounded-md w-full h-full object-cover"
+                                />
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    whileHover={{ opacity: 1 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300 p-6 text-center"
+                                >
+                                    <h3 className="text-2xl font-semibold">
+                                        {project.title}
+                                    </h3>
+                                    <p className="text-gray-400 mt-2">
+                                        {project.description}
+                                    </p>
+                                </motion.div>
                             </motion.div>
-                        </motion.div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
         </section>
     );
 }
