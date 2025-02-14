@@ -1,10 +1,32 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const hkGrotesk = Hanken_Grotesk({
-    variable: "--font-hk-grotesk",
-    subsets: ["latin"],
+const hkGroteskWide = localFont({
+    src: [
+        {
+            path: "../public/fonts/HKGroteskWide-Black.otf",
+        },
+        {
+            path: "../public/fonts/HKGroteskWide-Bold.otf",
+        },
+        {
+            path: "../public/fonts/HKGroteskWide-ExtraBold.otf",
+        },
+        {
+            path: "../public/fonts/HKGroteskWide-Light.otf",
+        },
+        {
+            path: "../public/fonts/HKGroteskWide-Medium.otf",
+        },
+        {
+            path: "../public/fonts/HKGroteskWide-Regular.otf",
+        },
+        {
+            path: "../public/fonts/HKGroteskWide-SemiBold.otf",
+        },
+    ],
+    variable: "--font-hk-grotesk-wide",
 });
 
 export const metadata: Metadata = {
@@ -19,7 +41,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${hkGrotesk.variable} antialiased`}>
+            <body className={`${hkGroteskWide.variable} antialiased`}>
                 {children}
             </body>
         </html>

@@ -20,7 +20,10 @@ export default function Home() {
     }, [scrollY]);
 
     return (
-        <main className="relative bg-[#111111] text-white min-h-screen font-grotesk overflow-hidden">
+        <main
+            className="relative bg-[#111111] text-white min-h-screen overflow-hidden"
+            style={{ fontFamily: "var(--font-hk-grotesk-wide)" }}
+        >
             <motion.div
                 className="fixed top-[-100px] left-[300px] w-[500px] h-[500px] bg-gradient-to-br from-[#52E7D6] to-[#2E8177] rounded-full blur-3xl opacity-10"
                 style={{ transform: `translateY(${scrollPosition * 0.2}px)` }}
