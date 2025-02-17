@@ -10,7 +10,10 @@ export default {
         extend: {
             fontFamily: {
                 grotesk: ["HK Grotesk Wide", "sans-serif"],
-                groteskWide: ["var(--font-hk-grotesk-wide)",  ],
+                groteskWideExtraBold: [
+                    "var(--font-hk-grotesk-wide-extra-bold)",
+                ],
+                groteskWideRegular: ["var(--font-hk-grotesk-wide-regular)"],
             },
             colors: {
                 background: "var(--background)",

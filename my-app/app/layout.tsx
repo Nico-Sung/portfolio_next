@@ -2,35 +2,27 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const hkGroteskWide = localFont({
+const hkGroteskWideExtraBold = localFont({
     src: [
-        {
             path: "../public/fonts/HKGroteskWide-Black.otf",
-        },
-        {
-            path: "../public/fonts/HKGroteskWide-Bold.otf",
-        },
         {
             path: "../public/fonts/HKGroteskWide-ExtraBold.otf",
         },
-        {
-            path: "../public/fonts/HKGroteskWide-Light.otf",
-        },
-        {
-            path: "../public/fonts/HKGroteskWide-Medium.otf",
-        },
+    ],
+    variable: "--font-hk-grotesk-wide-extra-bold",
+});
+
+const hkGroteskWideRegular = localFont({
+    src: [
         {
             path: "../public/fonts/HKGroteskWide-Regular.otf",
         },
-        {
-            path: "../public/fonts/HKGroteskWide-SemiBold.otf",
-        },
     ],
-    variable: "--font-hk-grotesk-wide",
+    variable: "--font-hk-grotesk-wide-regular",
 });
 
 export const metadata: Metadata = {
-    title: "Portfolio",
+    title: "Portfolio - Nicolas SUNG",
     description: "My personal portfolio",
 };
 
@@ -41,7 +33,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${hkGroteskWide.variable} antialiased`}>
+            <body
+                className={`${hkGroteskWideRegular.variable} ${hkGroteskWideExtraBold.variable} antialiased`}
+            >
                 {children}
             </body>
         </html>

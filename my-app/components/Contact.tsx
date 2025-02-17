@@ -55,6 +55,9 @@ export default function ContactForm() {
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
+                style={{
+                    fontFamily: "var(--font-hk-grotesk-wide-extra-bold )",
+                }}
             >
                 CONTACT ME
             </motion.h2>

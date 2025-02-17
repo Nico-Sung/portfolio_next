@@ -3,6 +3,7 @@ import Cursor from "@/components/Cursor";
 import Header from "@/components/Header";
 import Main from "@/components/Main";
 import AboutMe from "@/components/AboutMe";
+import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -23,10 +24,10 @@ export default function Home() {
     return (
         <main
             className="relative bg-[#111111] text-white min-h-screen overflow-hidden"
-            style={{ fontFamily: "var(--font-hk-grotesk-wide)" }}
+            style={{ fontFamily: "var(--font-hk-grotesk-wide-regular )" }}
         >
             <motion.div
-                className="fixed top-[-100px] left-[300px] w-[500px] h-[500px] bg-gradient-to-br from-[#52E7D6] to-[#2E8177] rounded-full blur-3xl opacity-10"
+                className="fixed top-[-100px] left-[300px] w-[500px] h-[500px] bg-gradient-to-br from-[#52E7D6] to-[#2E8177] rounded-full blur-3xl opacity-10 "
                 style={{ transform: `translateY(${scrollPosition * 0.2}px)` }}
                 whileTap={{ opacity: 0 }}
             ></motion.div>

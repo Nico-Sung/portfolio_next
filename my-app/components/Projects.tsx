@@ -53,9 +53,12 @@ export default function Projects() {
             className=" min-h-screen flex flex-col justify-center mt-32"
         >
             <motion.h2
-                className="text-8xl font-extrabold w-full text-center top-0  transform -translate-x-1/2 z-0"
+                className="text-9xl font-extrabold w-5/6 mx-auto top-0 transform -translate-x-1/2 z-0"
                 animate={{ y: scrollValue * 100 }}
                 transition={{ duration: 1 }}
+                style={{
+                    fontFamily: "var(--font-hk-grotesk-wide-extra-bold )",
+                }}
             >
                 PROJECTS
             </motion.h2>
