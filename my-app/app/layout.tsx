@@ -4,7 +4,6 @@ import "./globals.css";
 
 const hkGroteskWideExtraBold = localFont({
     src: [
-            path: "../public/fonts/HKGroteskWide-Black.otf",
         {
             path: "../public/fonts/HKGroteskWide-ExtraBold.otf",
         },
