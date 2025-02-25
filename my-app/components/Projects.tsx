@@ -82,9 +82,10 @@ export default function Projects() {
                                 <Image
                                     src={project.image}
                                     alt={project.title}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    className="rounded-md w-full h-full object-cover"
+                                    fill
+                                    className="object-cover rounded-lg"
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                    priority={index < 2}
                                 />
                                 <motion.div
                                     initial={{ opacity: 0 }}

@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 
 export default function Main() {
+    const name = "NICOLAS".split("");
+    const lastName = "SUNG".split("");
+    const job = "Full Stack Developer".split("");
     return (
         <motion.section
             initial={{ opacity: 0, y: -50 }}
@@ -8,25 +11,70 @@ export default function Main() {
             transition={{ duration: 1 }}
             className="text-center py-64 min-h-screen"
         >
-            <h1
-                className="text-9xl "
-                style={{
-                    fontFamily: "var(--font-hk-grotesk-wide-extra-bold )",
-                }}
-            >
-                NICOLAS
-            </h1>
-            <h1
-                className="text-9xl  "
-                style={{
-                    WebkitTextStroke: "1px white",
-                    color: "transparent",
-                    fontFamily: "var(--font-hk-grotesk-wide-extra-bold )",
-                }}
-            >
-                SUNG
-            </h1>
-            <h2 className="text-2xl  mt-4 ">Full Stack Developer</h2>
+            <div>
+                <div>
+                    {name.map((el, i) => (
+                        <motion.span
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                                duration: 0.25,
+                                delay: i / 10,
+                            }}
+                            key={i}
+                            className="text-9xl"
+                            style={{
+                                fontFamily:
+                                    "var(--font-hk-grotesk-wide-extra-bold )",
+                            }}
+                        >
+                            {el}
+                            {""}
+                        </motion.span>
+                    ))}
+                </div>
+                <div>
+                    {lastName.map((el, i) => (
+                        <motion.span
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                                duration: 0.25,
+                                delay: (name.length + i) / 10,
+                            }}
+                            key={i}
+                            className="text-9xl "
+                            style={{
+                                WebkitTextStroke: "1px white",
+                                color: "transparent",
+                                fontFamily:
+                                    "var(--font-hk-grotesk-wide-extra-bold )",
+                            }}
+                        >
+                            {el}
+                            {""}
+                        </motion.span>
+                    ))}
+                </div>
+                <div>
+                    {job.map((el, i) => (
+                        <motion.span
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                                duration: 0.01,
+                                delay: (name.length + i) / 10,
+                            }}
+                            key={i}
+                            className="text-2xl  mt-4 "
+                        >
+                            {el}
+                            {""}
+                        </motion.span>
+                    ))}
+                </div>
+            </div>
+
             <a
                 href="/CV%20Nicolas%202024%20(2).pdf"
                 download

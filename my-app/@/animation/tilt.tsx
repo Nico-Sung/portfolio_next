@@ -9,7 +9,8 @@ interface TiltProps {
 const Tilt: React.FC<TiltProps> = ({ children, className, rotateRatio = 20 }) => {
   const [transformStyle, setTransformStyle] = useState<string>("");
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
+     {
     const card = e.currentTarget;
     const { offsetWidth: width, offsetHeight: height } = card;
     const { clientX, clientY } = e;

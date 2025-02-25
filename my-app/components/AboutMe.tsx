@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import handleScroll from "../utils/handleScroll";
+import Tilt from "../@/animation/tilt";
 export default function AboutMe() {
     return (
         <section
@@ -21,13 +22,15 @@ export default function AboutMe() {
             </motion.h2>
             <motion.div className="flex flex-col mt-12 items-center">
                 <div className="flex items-center">
-                    <Image
-                        src="/IMG_3467.jpg"
-                        alt="profile"
-                        width={250}
-                        height={4000}
-                        className="rounded-lg"
-                    ></Image>
+                    <Tilt rotateRatio={25} className="z-50">
+                        <Image
+                            src="/IMG_3467.jpg"
+                            alt="profile"
+                            width={250}
+                            height={4000}
+                            className="rounded-lg"
+                        ></Image>
+                    </Tilt>
                     <div className="ml-24">
                         <motion.p
                             className="text-lg max-w-xl text-left mb-6"
