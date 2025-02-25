@@ -13,7 +13,7 @@ const webDevelopmentSkills = [
     },
     {
         name: "JavaScript",
-        icon: "/skills/Javascript.svg",
+        icon: "/skills/JavaScript.svg",
     },
     {
         name: "TypeScript",
