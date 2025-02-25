@@ -50,7 +50,7 @@ export default function Projects() {
     return (
         <section
             id="projects"
-            className=" min-h-screen flex flex-col justify-center mt-32"
+            className=" min-h-screen flex flex-col justify-center "
         >
             <motion.h2
                 className="text-9xl font-extrabold w-5/6 mx-auto top-0 transform -translate-x-1/2 z-0"

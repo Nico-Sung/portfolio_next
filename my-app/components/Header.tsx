@@ -1,14 +1,30 @@
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import handleScroll from "../utils/handleScroll";
+import { useState } from "react";
 
 export default function Header() {
+    const [hidden, setHidden] = useState(false);
+    const { scrollY } = useScroll();
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const previous = scrollY.getPrevious() ?? 0;
+        if (latest > previous && latest > 150) {
+            setHidden(true);
+        } else {
+            setHidden(false);
+        }
+    });
+
     return (
         <motion.header
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="fixed top-0 left-0 right-0 flex justify-between items-center p-4 md:py-2 md:px-6 text-white bg-transparent backdrop-blur-md z-[9998]"
+            variants={{
+                visible: { y: 0, opacity: 1 },
+                hidden: { y: "-100%", opacity: 0 },
+            }}
+            animate={hidden ? "hidden" : "visible"}
+            transition={{ duration: 0.35, ease: "easeInOut" }}
+            className="fixed top-0 left-0 right-0 flex justify-between items-center p-4 md:py-2 md:px-6 text-white  backdrop-blur-md z-[9998]"
         >
             <div className="logo">
                 <Image

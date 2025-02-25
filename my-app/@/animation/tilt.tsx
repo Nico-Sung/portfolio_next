@@ -1,42 +1,73 @@
-import React, { useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { ReactNode } from "react";
 
 interface TiltProps {
-  children: React.ReactNode;
-  className?: string;
-  rotateRatio: number;
+    children: ReactNode;
+    className?: string;
+    rotateRatio?: number;
 }
 
-const Tilt: React.FC<TiltProps> = ({ children, className, rotateRatio = 20 }) => {
-  const [transformStyle, setTransformStyle] = useState<string>("");
+export default function Tilt({
+    children,
+    className,
+    rotateRatio = 1.5,
+}: TiltProps) {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const card = e.currentTarget;
-    const { offsetWidth: width, offsetHeight: height } = card;
-    const { clientX, clientY } = e;
-    const { left, top } = card.getBoundingClientRect();
+    const mouseXSpring = useSpring(x, {
+        stiffness: 75,
+        damping: 35,
+    });
+    const mouseYSpring = useSpring(y, {
+        stiffness: 75,
+        damping: 35,
+    });
 
-    const x = clientX - left - width / 2;
-    const y = clientY - top - height / 2;
-    const rotateX = (y / height) * rotateRatio;
-    const rotateY = -(x / width) * rotateRatio;
+    const rotateX = useTransform(
+        mouseYSpring,
+        [-0.5, 0.5],
+        [rotateRatio, -rotateRatio]
+    );
+    const rotateY = useTransform(
+        mouseXSpring,
+        [-0.5, 0.5],
+        [-rotateRatio, rotateRatio]
+    );
 
-    setTransformStyle(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
-  };
+    function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
+        const rect = event.currentTarget.getBoundingClientRect();
 
-  const handleMouseLeave = () => {
-    setTransformStyle("");
-  };
+        const width = rect.width;
+        const height = rect.height;
 
-  return (
-    <div
-      className={`transition-transform duration-300 ease-out ${className}`}
-      style={{ transform: transformStyle }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      {children}
-    </div>
-  );
-};
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
 
-export default Tilt;
+        const xPct = mouseX / width - 0.5;
+        const yPct = mouseY / height - 0.5;
+
+        x.set(xPct);
+        y.set(yPct);
+    }
+
+    function handleMouseLeave() {
+        x.set(0);
+        y.set(0);
+    }
+
+    return (
+        <motion.div
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+            }}
+            className={className}
+        >
+            {children}
+        </motion.div>
+    );
+}
