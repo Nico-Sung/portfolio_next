@@ -95,8 +95,9 @@ export default function Skills() {
                 <motion.div
                     key={skill.name}
                     className="flex flex-col items-center gap-2 sm:gap-4 p-3 sm:p-4 lg:p-6 rounded-xl hover:bg-white/5 transition-colors"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{
                         duration: 0.5,
                         delay: index * 0.1,
@@ -121,18 +122,18 @@ export default function Skills() {
 
     return (
         <motion.section
-            className="min-h-screen w-11/12 sm:w-5/6 mx-auto flex flex-col gap-10 sm:gap-16 lg:gap-20 py-10 sm:py-16"
+            className="lg:min-h-screen w-11/12 sm:w-5/6 mx-auto flex flex-col gap-10 sm:gap-16 lg:gap-20 py-10 sm:py-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
         >
             <motion.h2
-                className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold text-center"
+                className="text-4xl sm:text-6xl font-extrabold text-center"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
                 style={{
                     fontFamily: "var(--font-hk-grotesk-wide-extra-bold)",
                 }}
@@ -141,7 +142,13 @@ export default function Skills() {
             </motion.h2>
 
             <div className="space-y-8 sm:space-y-12">
-                <div className="flex justify-center gap-4 sm:gap-8 relative z-10">
+                <motion.div
+                    className="flex justify-center gap-4 sm:gap-8 relative z-10"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                >
                     <button
                         onClick={() => setActiveCategory("development")}
                         className={`text-base sm:text-lg lg:text-xl font-semibold transition-all ${
@@ -162,12 +169,13 @@ export default function Skills() {
                     >
                         Web Design
                     </button>
-                </div>
+                </motion.div>
 
                 <motion.div
                     key={activeCategory}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                     className="relative z-0"
                 >

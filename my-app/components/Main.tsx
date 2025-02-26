@@ -8,7 +8,7 @@ export default function Main() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-center py-64 min-h-screen relative "
+            className="text-center py-64 lg:min-h-screen relative "
         >
             <div>
                 <div>
@@ -21,7 +21,7 @@ export default function Main() {
                                 delay: i / 10,
                             }}
                             key={i}
-                            className="text-9xl"
+                            className="text-6xl sm:text-9xl lg:text-9xl"
                             style={{
                                 fontFamily:
                                     "var(--font-hk-grotesk-wide-extra-bold )",
@@ -42,7 +42,7 @@ export default function Main() {
                                 delay: (name.length + i) / 10,
                             }}
                             key={i}
-                            className="text-9xl "
+                            className="text-6xl sm:text-9xl lg:text-9xl "
                             style={{
                                 WebkitTextStroke: "1px white",
                                 color: "transparent",
@@ -65,7 +65,7 @@ export default function Main() {
                                 delay: (name.length + i) / 10,
                             }}
                             key={i}
-                            className="text-2xl  mt-4 "
+                            className="text-10 sm:text-2xl lg:text-2xl  mt-4 "
                         >
                             {el}
                             {""}
@@ -79,7 +79,7 @@ export default function Main() {
                 download
                 className="mt-8 inline-block"
             >
-                <button className="px-4 py-2 text-white text-xl rounded border border-white hover:bg-white hover:text-black transition-colors duration-300">
+                <button className="px-4 py-2 text-white text-xs sm:text-xl  rounded border border-white hover:bg-white hover:text-black transition-colors duration-300">
                     Download my CV
                 </button>
             </a>

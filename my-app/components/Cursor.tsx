@@ -11,7 +11,7 @@ export default function Cursor() {
         };
 
         const checkScreenSize = () => {
-            setIsMobile(window.innerWidth <= 768);
+            setIsMobile(window.innerWidth <= 1000);
         };
 
         window.addEventListener("mousemove", handleMouseMove);

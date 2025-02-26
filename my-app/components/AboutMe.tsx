@@ -13,45 +13,72 @@ export default function AboutMe() {
             <motion.h2
                 className="text-4xl sm:text-6xl font-extrabold mb-8 sm:mb-12"
                 initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
                 style={{
                     fontFamily: "var(--font-hk-grotesk-wide-extra-bold)",
                 }}
             >
                 ABOUT ME
             </motion.h2>
-            <motion.div className="flex flex-col items-center">
+            <motion.div
+                className="flex flex-col items-center"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+            >
                 <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
-                    <Tilt rotateRatio={25} className="z-50">
-                        <Image
-                            src="/IMG_3467.jpg"
-                            alt="profile"
-                            width={250}
-                            height={250}
-                            className="rounded-lg"
-                        />
-                    </Tilt>
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <Tilt rotateRatio={25} className="z-50">
+                            <Image
+                                src="/IMG_3467.jpg"
+                                alt="profile"
+                                width={250}
+                                height={250}
+                                className="rounded-lg"
+                            />
+                        </Tilt>
+                    </motion.div>
                     <div className="flex flex-col items-center md:items-start">
                         <motion.p
-                            className="text-base sm:text-lg max-w-xl text-center md:text-left mb-8"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1, delay: 0.3 }}
+                            className="text-base sm:text-lg max-w-xl text-justify sm:text-center md:text-left mb-8"
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                duration: 0.8,
+                                ease: "easeOut",
+                            }}
                         >
-                            I am a passionate full-stack developer with
-                            experience in building modern web applications using
-                            React, Next.js, and Tailwind CSS. I love creating
-                            interactive and user-friendly interfaces. I am
-                            always eager to learn new technologies and improve
-                            my skills. I am currently looking for new
-                            opportunities to work on exciting projects.
+                            I am a passionate full-stack developer with a strong
+                            expertise in building modern and interactive web
+                            applications. With experience in React, Next.js, and
+                            Tailwind CSS, I focus on creating smooth,
+                            user-friendly, and aesthetically pleasing
+                            interfaces. I am always eager to learn new
+                            technologies and improve my skills, whether in
+                            frontend, backend, or even 3D modeling. My goal is
+                            to deliver high-quality digital experiences by
+                            combining performance, design, and functionality.
                         </motion.p>
-                        <div className="flex flex-col sm:flex-row  items-center w-full justify-between ">
+                        <motion.div
+                            className="flex flex-col sm:flex-row items-center w-full justify-between"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                        >
                             <a
                                 href="#contact"
                                 onClick={(e) => handleScroll(e, "contact")}
-                                className="z-50 bg-blue-500 text-white py-2 px-6 rounded-full transition mb-4 duration-300 ease-in-out transform hover:scale-105"
+                                className="z-50 bg-blue-500 text-white py-2 px-6 rounded-full transition mb-4 sm:mb-0 duration-300 ease-in-out transform hover:scale-105"
                             >
                                 Contact me
                             </a>
@@ -83,7 +110,7 @@ export default function AboutMe() {
                                     />
                                 </Link>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </motion.div>
