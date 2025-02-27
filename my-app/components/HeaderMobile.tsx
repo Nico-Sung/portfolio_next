@@ -43,7 +43,10 @@ export default function BottomNavigation() {
                     }`}
                     whileTap={{ scale: 0.9 }}
                     onClick={(e) => {
-                        handleScroll(e, item.id);
+                        handleScroll(
+                            e as unknown as React.MouseEvent<HTMLAnchorElement>,
+                            item.id
+                        );
                         setActive(item.id);
                     }}
                 >
