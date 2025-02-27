@@ -1,7 +1,7 @@
 # Portfolio Personnel
 
 Bienvenue sur le dépôt de mon portfolio personnel, développé avec [Next.js](https://nextjs.org/) et [Tailwind CSS](https://tailwindcss.com/). 
-Ce projet a pour objectif de présenter mes compétences, mes projets et mon parcours professionnel de manière moderne et réactive.
+Ce projet a pour objectif de présenter mes compétences et mes projets de manière moderne et réactive.
 
 ## Aperçu
 
@@ -52,7 +52,7 @@ Pour cloner et exécuter ce projet en local, veuillez suivre les étapes ci-dess
 
 ## Déploiement
 
-Ce projet est déployé en continu grâce à [Vercel](https://vercel.com/). Toute modification poussée sur la branche principale déclenche automatiquement un nouveau déploiement.
+Ce projet est déployé en continu grâce à [Vercel](https://vercel.com/).
 
 
 ---
