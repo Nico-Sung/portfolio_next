@@ -18,7 +18,7 @@ export async function POST(req: Request) {
             from: "noreply@sungnicolas.fr",
             to: email,
             subject: "Thank you for your message!",
-            text: `Hi ${name},\n\nThank you for reaching out! I have received your message and will get back to you as soon as possible.\nIf you want to contact me, you can reach me at this email : nicolassung01@gmail.com\n\nBest regards,\nSung Nicolas`,
+            text: `Hi ${name},\n\nThank you for reaching out! I have received your message and will get back to you as soon as possible.\nIf you want to contact me, you can reach me at this email : nicolassung01@gmail.com or via Linkedin : https://www.linkedin.com/in/nicolas-sung-898031273/\n\nBest regards,\nSung Nicolas`,
         });
         console.log("User email sent:", userResponse);
 
