@@ -105,7 +105,7 @@ export default function ContactForm() {
                 </div>
                 <button
                     type="submit"
-                    className="mt-4 px-6 py-3 text-white text-xs sm:text-xl  rounded border border-white  hover:bg-white hover:text-black transition-colors duration-300 z-[999]"
+                    className="mt-4 px-6 py-3 text-white  rounded border border-white mb-4 sm:mb-0  hover:bg-white hover:text-black transition-colors duration-300 z-[999]"
                 >
                     Send Message
                 </button>

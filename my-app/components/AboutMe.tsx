@@ -78,7 +78,7 @@ export default function AboutMe() {
                             <a
                                 href="#contact"
                                 onClick={(e) => handleScroll(e, "contact")}
-                                className="px-4 py-2 text-white text-xs sm:text-xl  rounded border border-white mb-4 sm:mb-0  hover:bg-white hover:text-black transition-colors duration-300 z-[999]"
+                                className="px-4 py-2 text-white rounded border border-white mb-4 sm:mb-0  hover:bg-white hover:text-black transition-colors duration-300 z-[999]"
                             >
                                 Contact me
                             </a>
