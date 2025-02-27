@@ -40,7 +40,7 @@ const webDevelopmentSkills = [
         icon: "/skills/Python-Light.svg",
     },
     {
-        name: "SQL",
+        name: "MySQL",
         icon: "/skills/MySQL-Light.svg",
     },
     {
@@ -51,12 +51,20 @@ const webDevelopmentSkills = [
         name: "Prisma",
         icon: "/skills/Prisma.svg",
     },
+    {
+        name: "Raspberry Pi",
+        icon: "/skills/RaspberryPi-Light.svg",
+    },
 ];
 
 const webDesignSkills = [
     {
         name: "Tailwind CSS",
         icon: "/skills/TailwindCSS-Light.svg",
+    },
+    {
+        name: "Bootstrap",
+        icon: "/skills/Bootstrap.svg",
     },
     {
         name: "Blender",
@@ -90,7 +98,7 @@ export default function Skills() {
     >("development");
 
     const renderSkillsSection = (skills: typeof webDevelopmentSkills) => (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-10 ">
             {skills.map((skill, index) => (
                 <motion.div
                     key={skill.name}

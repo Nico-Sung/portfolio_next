@@ -75,7 +75,7 @@ export default function Main() {
             </div>
 
             <a
-                href="/CV%20Nicolas%202024%20(2).pdf"
+                href="/CV%20Nicolas%202024%20(3).pdf"
                 download
                 className="mt-8 inline-block"
             >

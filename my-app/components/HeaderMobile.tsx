@@ -34,7 +34,7 @@ export default function BottomNavigation() {
     }, []);
 
     return (
-        <nav className="fixed bottom-6 left-0 right-0 bg-zinc-900 opacity-95 mx-8 rounded-2xl text-white flex justify-around items-center py-3 md:hidden shadow-lg z-[9999] ">
+        <nav className="fixed bottom-6 left-0 right-0 bg-zinc-900 opacity-95 mx-8 rounded-full text-white flex justify-around items-center py-3 md:hidden shadow-lg z-[9999] ">
             {navItems.map((item) => (
                 <motion.button
                     key={item.id}

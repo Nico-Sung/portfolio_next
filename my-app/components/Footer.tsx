@@ -2,7 +2,7 @@ import handleScroll from "../utils/handleScroll";
 
 export default function Footer() {
     return (
-        <footer className="flex flex-col justify-center items-center backdrop-blur-sm bg-white bg-opacity-5 text-white p-4">
+        <footer className="flex flex-col justify-center items-center backdrop-blur-sm bg-white bg-opacity-5 text-white p-4 lg:pb-4 md:pb-4 sm:pb-32 pb-32">
             <p className="text-3xl font-semibold">By Nicolas.</p>
             <div className="flex space-x-6 mt-4">
                 <a
