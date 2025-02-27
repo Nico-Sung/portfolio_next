@@ -51,7 +51,7 @@ export default function ContactForm() {
                 Get in touch
             </motion.p>
             <motion.h2
-                className="text-6xl font-extrabold"
+                className="text-4xl sm:text-6xl font-extrabold"
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
