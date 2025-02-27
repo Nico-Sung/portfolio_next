@@ -11,6 +11,7 @@ const projects = [
         description:
             "A website allowing you to collect cards from the Harry Potter universe. This project was carried out with Node.js, Express.js and Prisma.",
         github: "https://github.com/Nico-Sung/Harry_Potter_Card",
+        id: "1",
     },
     {
         title: "Santa Ski",
@@ -18,6 +19,7 @@ const projects = [
         description:
             "A school project which aims to encourage disadvantaged children to go on ski holidays for free. This project combines a dynamic frontend and a robust backend to provide an immersive experience.",
         github: "https://github.com/Nico-Sung/SantaSki",
+        id: "2",
     },
     {
         title: "Pokemon Fight",
@@ -25,6 +27,7 @@ const projects = [
         description:
             "A little project to learn PHP. It includes a PHP interface allowing the display of Pokémon with their characteristics.",
         github: "https://github.com/Nico-Sung/pokemon_pdo",
+        id: "3",
     },
     {
         title: "To do list",
@@ -32,13 +35,15 @@ const projects = [
         description:
             "This project is a task management application (To-Do List) built in TypeScript",
         github: "https://github.com/Nico-Sung/todolist_ts",
+        id: "4",
     },
     {
         title: "IFT",
-        image: "/projects/projet5/Capture d’écran 2025-02-26 à 13.53.14.png",
+        image: "/projects/projet5/Capture d’écran 2025-02-26 à 13.53.54.png",
         description:
             "Team project with the IFT of De Vinci (Institute for Future Technologies) which aims to develop a virtual gallery presenting technological innovations with a digital label system.",
         github: "https://github.com/Nico-Sung/BAP_18",
+        id: "5",
     },
 ];
 
@@ -62,6 +67,7 @@ export default function Projects() {
             className="sm:min-h-screen flex flex-col justify-center"
         >
             <motion.h2
+                id="projects-title"
                 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold w-11/12 sm:w-5/6 mx-auto top-0 transform -translate-x-1/2 z-0"
                 animate={{ y: scrollValue * 100 }}
                 transition={{ duration: 1 }}
@@ -122,7 +128,7 @@ export default function Projects() {
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
-                            className=" cursor-pointer mb-6 flex flex-col bg-zinc-900  p-4 rounded-lg "
+                            className=" cursor-pointer mb-6 flex flex-col bg-zinc-900  p-4 rounded-lg z-10"
                             onClick={() => handleProjectClick(project.github)}
                         >
                             <Image
@@ -136,7 +142,10 @@ export default function Projects() {
                                 <h3 className="text-xl font-semibold text-white">
                                     {project.title}
                                 </h3>
-                                <p className="text-gray-200 mt-2">
+                                <p
+                                    className="text-gray-200 mt-2"
+                                    id={project.id}
+                                >
                                     {project.description}
                                 </p>
                                 <p

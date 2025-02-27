@@ -1,6 +1,7 @@
 "use client";
 import Cursor from "@/components/Cursor";
 import Header from "@/components/Header";
+import HeaderMobile from "@/components/HeaderMobile";
 import Main from "@/components/Main";
 import AboutMe from "@/components/AboutMe";
 import Projects from "@/components/Projects";
@@ -12,7 +13,7 @@ import { useEffect, useState } from "react";
 import Skills from "@/components/Skills";
 export default function Home() {
     const { scrollY } = useScroll();
-    const [scrollPosition, setScrollPosition] = useState(0);
+    const [scrollValue, setScrollPosition] = useState(0);
 
     useEffect(() => {
         return scrollY.onChange((latest) => {
@@ -27,16 +28,17 @@ export default function Home() {
         >
             <motion.div
                 className="fixed top-[-100px] left-[300px] w-[500px] h-[500px] bg-gradient-to-br from-[#52E7D6] to-[#2E8177] rounded-full blur-3xl opacity-10 "
-                style={{ transform: `translateY(${scrollPosition * 0.2}px)` }}
+                style={{ transform: `translateY(${scrollValue * 0.2}px)` }}
                 whileTap={{ opacity: 0 }}
             ></motion.div>
             <motion.div
                 className="fixed top-[-100px] right-[200px] w-[500px] h-[500px] bg-gradient-to-br from-[#7552E7] to-[#412E81] rounded-full blur-3xl opacity-10"
-                style={{ transform: `translateY(${scrollPosition * 0.2}px)` }}
+                style={{ transform: `translateY(${scrollValue * 0.2}px)` }}
                 whileTap={{ opacity: 0 }}
             ></motion.div>
             <Cursor />
             <Header />
+            <HeaderMobile />
             <Main />
             <AboutMe />
             <Skills />

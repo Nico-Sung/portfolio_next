@@ -24,7 +24,7 @@ export default function Header() {
             }}
             animate={hidden ? "hidden" : "visible"}
             transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="fixed top-0 left-0 right-0 flex justify-between items-center p-4 md:py-2 md:px-6 text-white  backdrop-blur-md z-[9998]"
+            className="fixed top-0 left-0 right-0  justify-between items-center p-4 md:py-2 md:px-6 text-white  backdrop-blur-md z-[9998] flex "
         >
             <div className="logo">
                 <Image
@@ -35,13 +35,21 @@ export default function Header() {
                     className="md:w-20 md:h-20"
                 />
             </div>
-            <nav className="flex space-x-4 md:space-x-6 text-sm md:text-lg items-center">
+            <nav className=" space-x-4 md:space-x-6 text-sm md:text-lg items-center hidden sm:hidden md:flex lg:flex">
                 <a
                     href="#about-me"
                     onClick={(e) => handleScroll(e, "about-me")}
                     className="hover:text-gray-400 z-50"
                 >
                     about me
+                </a>
+                <div className="w-1 h-1 md:w-2 md:h-2 bg-white rounded-lg"></div>
+                <a
+                    href="#skills"
+                    onClick={(e) => handleScroll(e, "skills")}
+                    className="hover:text-gray-400 z-50"
+                >
+                    skills
                 </a>
                 <div className="w-1 h-1 md:w-2 md:h-2 bg-white rounded-lg"></div>
                 <a

@@ -122,13 +122,15 @@ export default function Skills() {
 
     return (
         <motion.section
-            className="lg:min-h-screen w-11/12 sm:w-5/6 mx-auto flex flex-col gap-10 sm:gap-16 lg:gap-20 py-10 sm:py-16"
+            id="skills"
+            className="w-11/12 sm:w-5/6 mx-auto flex flex-col gap-10 sm:gap-16 lg:gap-20 py-10 sm:py-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
         >
             <motion.h2
+                id="skills"
                 className="text-4xl sm:text-6xl font-extrabold text-center"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
