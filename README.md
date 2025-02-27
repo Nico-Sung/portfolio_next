@@ -1,4 +1,4 @@
-# Portfolio Personnel
+# Portfolio Personnel - Nicolas SUNG
 
 Bienvenue sur le dépôt de mon portfolio personnel, développé avec [Next.js](https://nextjs.org/) et [Tailwind CSS](https://tailwindcss.com/). 
 Ce projet a pour objectif de présenter mes compétences et mes projets de manière moderne et réactive.
