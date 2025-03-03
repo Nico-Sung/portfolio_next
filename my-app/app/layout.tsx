@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const hkGroteskWideExtraBold = localFont({
@@ -36,6 +37,7 @@ export default function RootLayout({
                 className={`${hkGroteskWideRegular.variable} ${hkGroteskWideExtraBold.variable} antialiased`}
             >
                 {children}
+                <Analytics />
             </body>
         </html>
     );
