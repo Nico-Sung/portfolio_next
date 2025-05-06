@@ -1,94 +1,116 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useState } from "react";
+import {
+    SiHtml5,
+    SiCss3,
+    SiJavascript,
+    SiTypescript,
+    SiReact,
+    SiNextdotjs,
+    SiNodedotjs,
+    SiExpress,
+    SiPython,
+    SiMysql,
+    SiSymfony,
+    SiPrisma,
+    SiRaspberrypi,
+    SiTailwindcss,
+    SiBootstrap,
+    SiBlender,
+    SiFigma,
+    SiAdobeillustrator,
+    SiAdobephotoshop,
+    SiAdobepremierepro,
+    SiAdobeaftereffects,
+} from "react-icons/si";
 
 const webDevelopmentSkills = [
     {
         name: "HTML",
-        icon: "/skills/HTML.svg",
+        icon: SiHtml5,
     },
     {
         name: "CSS",
-        icon: "/skills/CSS.svg",
+        icon: SiCss3,
     },
     {
         name: "JavaScript",
-        icon: "/skills/JavaScript.svg",
+        icon: SiJavascript,
     },
     {
         name: "TypeScript",
-        icon: "/skills/TypeScript.svg",
+        icon: SiTypescript,
     },
     {
         name: "React",
-        icon: "/skills/React-Light.svg",
+        icon: SiReact,
     },
     {
         name: "Next.js",
-        icon: "/skills/NextJS-Light.svg",
+        icon: SiNextdotjs,
     },
     {
         name: "Node.js",
-        icon: "/skills/NodeJS-Light.svg",
+        icon: SiNodedotjs,
     },
     {
         name: "Express",
-        icon: "/skills/ExpressJS-Light.svg",
+        icon: SiExpress,
     },
     {
         name: "Python",
-        icon: "/skills/Python-Light.svg",
+        icon: SiPython,
     },
     {
         name: "MySQL",
-        icon: "/skills/MySQL-Light.svg",
+        icon: SiMysql,
     },
     {
         name: "Symfony",
-        icon: "/skills/Symfony-Light.svg",
+        icon: SiSymfony,
     },
     {
         name: "Prisma",
-        icon: "/skills/Prisma.svg",
+        icon: SiPrisma,
     },
     {
         name: "Raspberry Pi",
-        icon: "/skills/RaspberryPi-Light.svg",
+        icon: SiRaspberrypi,
     },
 ];
 
 const webDesignSkills = [
     {
         name: "Tailwind CSS",
-        icon: "/skills/TailwindCSS-Light.svg",
+        icon: SiTailwindcss,
     },
     {
         name: "Bootstrap",
-        icon: "/skills/Bootstrap.svg",
+        icon: SiBootstrap,
     },
     {
         name: "Blender",
-        icon: "/skills/Blender-Light.svg",
+        icon: SiBlender,
     },
     {
         name: "Figma",
-        icon: "/skills/Figma-Light.svg",
+        icon: SiFigma,
     },
     {
         name: "Illustrator",
-        icon: "/skills/Illustrator.svg",
+        icon: SiAdobeillustrator,
     },
     {
         name: "Photoshop",
-        icon: "/skills/Photoshop.svg",
+        icon: SiAdobephotoshop,
     },
     {
         name: "Premiere Pro",
-        icon: "/skills/Premiere.svg",
+        icon: SiAdobepremierepro,
     },
     {
         name: "After Effects",
-        icon: "/skills/AfterEffects.svg",
+        icon: SiAdobeaftereffects,
     },
 ];
 
@@ -112,14 +134,20 @@ export default function Skills() {
                     }}
                     whileHover={{ scale: 1.05 }}
                 >
-                    <div className="relative w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12">
-                        <Image
-                            src={skill.icon}
-                            alt={skill.name}
-                            fill
-                            className="object-contain"
-                        />
-                    </div>
+                    <motion.div
+                        className="text-white"
+                        whileHover={{
+                            rotate: 360,
+                            scale: 1.2,
+                            color: "#3B82F6",
+                        }}
+                        transition={{
+                            duration: 0.5,
+                            ease: "easeInOut",
+                        }}
+                    >
+                        <skill.icon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />
+                    </motion.div>
                     <span className="text-xs sm:text-sm font-medium text-center">
                         {skill.name}
                     </span>
