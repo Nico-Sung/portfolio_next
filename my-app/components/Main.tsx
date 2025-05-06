@@ -133,7 +133,7 @@ function InfiniteMarquee({
     useEffect(() => {
         const marquee = marqueeRef.current;
         let animationFrame: number;
-        let scrollAmount = 1;
+        const scrollAmount = 1;
 
         function animate() {
             if (!marquee) return;

@@ -32,7 +32,7 @@ export default function BottomNavigation() {
         });
 
         return () => observer.disconnect();
-    }, []);
+    }, [navItems]);
 
     return (
         <nav className="fixed bottom-6 left-0 right-0 bg-zinc-900 opacity-95 mx-8 rounded-full text-white flex justify-around items-center py-3 md:hidden shadow-lg z-[9999] ">

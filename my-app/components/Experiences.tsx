@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Briefcase, Users } from "lucide-react";
 
 type Experience = {
     title: string;
