@@ -124,7 +124,7 @@ export default function Skills() {
             {skills.map((skill, index) => (
                 <motion.div
                     key={skill.name}
-                    className="flex flex-col items-center gap-2 sm:gap-4 p-3 sm:p-4 lg:p-6 rounded-xl hover:bg-white/5 transition-colors"
+                    className="flex flex-col items-center gap-2 sm:gap-4 p-3 sm:p-4 lg:p-6 rounded-xl transition-colors"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
