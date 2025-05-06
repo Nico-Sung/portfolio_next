@@ -69,6 +69,74 @@ export default function AboutMe() {
                             combining performance, design, and functionality.
                         </motion.p>
                         <motion.div
+                            className="flex flex-wrap justify-center gap-4 mb-8"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                        >
+                            <motion.div
+                                className="group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-lg backdrop-blur-sm border border-white/10 hover:border-white/30"
+                                whileHover={{ scale: 1.05, rotate: 2 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <span className="text-2xl transform group-hover:scale-110 transition-transform duration-300">
+                                    📚
+                                </span>
+                                <span className="font-medium text-sm">
+                                    History
+                                </span>
+                            </motion.div>
+                            <motion.div
+                                className="group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-lg backdrop-blur-sm border border-white/10 hover:border-white/30"
+                                whileHover={{ scale: 1.05, rotate: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <span className="text-2xl transform group-hover:scale-110 transition-transform duration-300">
+                                    🌍
+                                </span>
+                                <span className="font-medium text-sm">
+                                    Geopolitics
+                                </span>
+                            </motion.div>
+                            <motion.div
+                                className="group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg backdrop-blur-sm border border-white/10 hover:border-white/30"
+                                whileHover={{ scale: 1.05, rotate: 2 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <span className="text-2xl transform group-hover:scale-110 transition-transform duration-300">
+                                    🎾
+                                </span>
+                                <span className="font-medium text-sm">
+                                    Tennis
+                                </span>
+                            </motion.div>
+                            <motion.div
+                                className="group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-red-500/20 to-pink-500/20 rounded-lg backdrop-blur-sm border border-white/10 hover:border-white/30"
+                                whileHover={{ scale: 1.05, rotate: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <span className="text-2xl transform group-hover:scale-110 transition-transform duration-300">
+                                    🏀
+                                </span>
+                                <span className="font-medium text-sm">
+                                    Basketball
+                                </span>
+                            </motion.div>
+                            <motion.div
+                                className="group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-lg backdrop-blur-sm border border-white/10 hover:border-white/30"
+                                whileHover={{ scale: 1.05, rotate: 2 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <span className="text-2xl transform group-hover:scale-110 transition-transform duration-300">
+                                    ⚽
+                                </span>
+                                <span className="font-medium text-sm">
+                                    Soccer
+                                </span>
+                            </motion.div>
+                        </motion.div>
+                        <motion.div
                             className="flex flex-col sm:flex-row items-center w-full justify-between"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
