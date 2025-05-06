@@ -109,7 +109,7 @@ export default function Main() {
             <a
                 href="/CV Nicolas 2024.pdf"
                 download
-                className="mt-8  inline-block"
+                className="mt-8 mb-16 inline-block"
             >
                 <button className="px-4 py-2 text-white text-xs sm:text-xl  rounded border border-white hover:bg-white hover:text-black transition-colors duration-300">
                     Download my CV
