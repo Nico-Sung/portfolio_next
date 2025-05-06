@@ -11,6 +11,8 @@ import { motion, useScroll } from "framer-motion";
 import "swiper/css";
 import { useEffect, useState } from "react";
 import Skills from "@/components/Skills";
+import Experiences from "@/components/Experiences";
+
 export default function Home() {
     const { scrollY } = useScroll();
     const [scrollValue, setScrollPosition] = useState(0);
@@ -41,6 +43,7 @@ export default function Home() {
             <HeaderMobile />
             <Main />
             <AboutMe />
+            <Experiences />
             <Skills />
             <Projects />
             <Contact />

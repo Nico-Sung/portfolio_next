@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { User, Layers, Briefcase, Mail } from "lucide-react";
+import { User, Layers, Briefcase, Mail, Folder } from "lucide-react";
 import handleScroll from "../utils/handleScroll";
 
 export default function BottomNavigation() {
@@ -8,8 +8,9 @@ export default function BottomNavigation() {
 
     const navItems = [
         { id: "about-me", icon: <User />, label: "About" },
+        { id: "experiences", icon: <Briefcase />, label: "Exp" },
         { id: "skills", icon: <Layers />, label: "Skills" },
-        { id: "1", icon: <Briefcase />, label: "Projects" },
+        { id: "1", icon: <Folder />, label: "Projects" },
         { id: "contact", icon: <Mail />, label: "Contact" },
     ];
 
