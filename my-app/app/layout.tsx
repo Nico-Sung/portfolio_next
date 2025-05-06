@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
+import ScrollToTop from "../components/ScrollToTop";
 import "./globals.css";
 
 const hkGroteskWideExtraBold = localFont({
@@ -37,6 +38,7 @@ export default function RootLayout({
                 className={`${hkGroteskWideRegular.variable} ${hkGroteskWideExtraBold.variable} antialiased`}
             >
                 {children}
+                <ScrollToTop />
                 <Analytics />
             </body>
         </html>
