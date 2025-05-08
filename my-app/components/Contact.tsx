@@ -170,7 +170,7 @@ export default function ContactForm() {
             >
                 <div className="flex flex-col items-center gap-4 sm:gap-6">
                     <h3 className="text-2xl sm:text-3xl font-bold text-center">
-                        Let's Connect
+                        Let&apos;s Connect
                     </h3>
                     <p
                         className={`text-base sm:text-lg text-center max-w-2xl ${
