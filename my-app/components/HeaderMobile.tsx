@@ -1,6 +1,5 @@
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { User, Layers, Briefcase, Mail, Folder } from "lucide-react";
 import handleScroll from "../utils/handleScroll";
 
@@ -21,13 +20,16 @@ export default function BottomNavigation() {
         return () => window.removeEventListener("storage", handleThemeChange);
     }, []);
 
-    const navItems = [
-        { id: "about-me", icon: <User />, label: "About" },
-        { id: "experiences", icon: <Briefcase />, label: "Exp" },
-        { id: "skills", icon: <Layers />, label: "Skills" },
-        { id: "1", icon: <Folder />, label: "Projects" },
-        { id: "contact", icon: <Mail />, label: "Contact" },
-    ];
+    const navItems = useMemo(
+        () => [
+            { id: "about-me", icon: <User />, label: "About" },
+            { id: "experiences", icon: <Briefcase />, label: "Exp" },
+            { id: "skills", icon: <Layers />, label: "Skills" },
+            { id: "1", icon: <Folder />, label: "Projects" },
+            { id: "contact", icon: <Mail />, label: "Contact" },
+        ],
+        []
+    );
 
     useEffect(() => {
         const observer = new IntersectionObserver(

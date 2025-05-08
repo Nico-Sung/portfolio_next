@@ -52,13 +52,6 @@ export default function ContactForm() {
         }
     };
 
-    const handleScroll = (id: string) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
-    };
-
     return (
         <section
             id="contact"
@@ -184,9 +177,9 @@ export default function ContactForm() {
                             theme === "dark" ? "text-gray-300" : "text-gray-700"
                         }`}
                     >
-                        I'm always open to new opportunities and collaborations.
-                        Feel free to reach out to me through any of the
-                        following platforms.
+                        I&apos;m always open to new opportunities and
+                        collaborations. Feel free to reach out to me through any
+                        of the following platforms.
                     </p>
                 </div>
 

@@ -20,7 +20,6 @@ export default function Main() {
     const name = "NICOLAS".split("");
     const lastName = "SUNG".split("");
     const job = "Full Stack Developer".split("");
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [theme, setTheme] = useState("dark");
 
     // Technologies avec icônes et couleurs officielles
@@ -51,21 +50,6 @@ export default function Main() {
 
         window.addEventListener("storage", handleThemeChange);
         return () => window.removeEventListener("storage", handleThemeChange);
-    }, []);
-
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            setMousePosition({
-                x: e.clientX,
-                y: e.clientY,
-            });
-        };
-
-        window.addEventListener("mousemove", handleMouseMove);
-
-        return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
-        };
     }, []);
 
     return (
