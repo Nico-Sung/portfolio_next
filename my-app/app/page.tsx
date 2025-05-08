@@ -25,7 +25,7 @@ export default function Home() {
 
     return (
         <main
-            className="relative bg-[#111111] text-white min-h-screen overflow-hidden"
+            className={`relative min-h-screen`}
             style={{ fontFamily: "var(--font-hk-grotesk-wide-regular )" }}
         >
             <motion.div

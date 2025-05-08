@@ -28,7 +28,7 @@ export default function Cursor() {
 
     return (
         <motion.div
-            className="fixed pointer-events-none z-[9999] w-8 h-8 border border-[#CECECE] rounded-full"
+            className="fixed pointer-events-none z-[9999] w-8 h-8 border border-current rounded-full"
             style={{ backgroundColor: "transparent" }}
             animate={{ x: position.x - 10, y: position.y - 15 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}

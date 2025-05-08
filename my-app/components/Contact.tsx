@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function ContactForm() {
     const [formData, setFormData] = useState({
@@ -10,6 +11,20 @@ export default function ContactForm() {
         message: "",
     });
     const [status, setStatus] = useState<string | null>(null);
+    const [theme, setTheme] = useState("dark");
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        setTheme(savedTheme);
+
+        const handleThemeChange = () => {
+            const newTheme = localStorage.getItem("theme") || "dark";
+            setTheme(newTheme);
+        };
+
+        window.addEventListener("storage", handleThemeChange);
+        return () => window.removeEventListener("storage", handleThemeChange);
+    }, []);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -37,13 +52,24 @@ export default function ContactForm() {
         }
     };
 
+    const handleScroll = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
         <section
             id="contact"
-            className="relative min-h-screen flex flex-col justify-center items-center text-center  text-white p-10"
+            className={`relative min-h-screen flex flex-col justify-center items-center text-center p-10 ${
+                theme === "dark" ? "text-white" : "text-black"
+            }`}
         >
             <motion.p
-                className="mt-6 text-s max-w-3xl mx-8 text-gray-400"
+                className={`mt-6 text-s max-w-3xl mx-8 ${
+                    theme === "dark" ? "text-gray-400" : "text-gray-600"
+                }`}
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3 }}
@@ -56,7 +82,7 @@ export default function ContactForm() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
                 style={{
-                    fontFamily: "var(--font-hk-grotesk-wide-extra-bold )",
+                    fontFamily: "var(--font-hk-grotesk-wide-extra-bold)",
                 }}
             >
                 CONTACT ME
@@ -68,7 +94,11 @@ export default function ContactForm() {
                     <input
                         type="text"
                         name="name"
-                        className="w-full p-3 rounded bg-gray-800 text-white border border-gray-600"
+                        className={`w-full p-3 rounded ${
+                            theme === "dark"
+                                ? "bg-gray-800 text-white border-gray-600"
+                                : "bg-gray-100 text-black border-gray-300"
+                        } border`}
                         placeholder="Your Name"
                         required
                         value={formData.name}
@@ -82,7 +112,11 @@ export default function ContactForm() {
                     <input
                         type="email"
                         name="email"
-                        className="w-full p-3 rounded bg-gray-800 text-white border border-gray-600"
+                        className={`w-full p-3 rounded ${
+                            theme === "dark"
+                                ? "bg-gray-800 text-white border-gray-600"
+                                : "bg-gray-100 text-black border-gray-300"
+                        } border`}
                         placeholder="Your Email"
                         required
                         value={formData.email}
@@ -95,7 +129,11 @@ export default function ContactForm() {
                     </label>
                     <textarea
                         name="message"
-                        className="w-full p-3 rounded bg-gray-800 text-white border border-gray-600"
+                        className={`w-full p-3 rounded ${
+                            theme === "dark"
+                                ? "bg-gray-800 text-white border-gray-600"
+                                : "bg-gray-100 text-black border-gray-300"
+                        } border`}
                         placeholder="Your Message"
                         rows={5}
                         required
@@ -105,7 +143,11 @@ export default function ContactForm() {
                 </div>
                 <button
                     type="submit"
-                    className="mt-4 px-6 py-3 text-white  rounded border border-white mb-4 sm:mb-0  hover:bg-white hover:text-black transition-colors duration-300 z-[999]"
+                    className={`mt-4 px-6 py-3 rounded border transition-colors duration-300 z-[999] ${
+                        theme === "dark"
+                            ? "text-white border-white hover:bg-white hover:text-black"
+                            : "text-black border-black hover:bg-black hover:text-white"
+                    }`}
                 >
                     Send Message
                 </button>
@@ -113,14 +155,80 @@ export default function ContactForm() {
                     <p
                         className={`mt-4 ${
                             status.includes("success")
-                                ? "text-green-400"
-                                : "text-red-400"
+                                ? theme === "dark"
+                                    ? "text-green-400"
+                                    : "text-green-600"
+                                : theme === "dark"
+                                ? "text-red-400"
+                                : "text-red-600"
                         }`}
                     >
                         {status}
                     </p>
                 )}
             </form>
+
+            <motion.div
+                className="flex flex-col items-center gap-8 sm:gap-12 mt-10"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+            >
+                <div className="flex flex-col items-center gap-4 sm:gap-6">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-center">
+                        Let's Connect
+                    </h3>
+                    <p
+                        className={`text-base sm:text-lg text-center max-w-2xl ${
+                            theme === "dark" ? "text-gray-300" : "text-gray-700"
+                        }`}
+                    >
+                        I'm always open to new opportunities and collaborations.
+                        Feel free to reach out to me through any of the
+                        following platforms.
+                    </p>
+                </div>
+
+                <div className="flex gap-6 sm:gap-8">
+                    <motion.a
+                        href="https://github.com/Nico-Sung"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`p-4 rounded-full transition-colors ${
+                            theme === "dark"
+                                ? "bg-black/20 hover:bg-black/30"
+                                : "bg-gray-100 hover:bg-gray-200"
+                        }`}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <FaGithub
+                            className={`w-8 h-8 sm:w-10 sm:h-10 ${
+                                theme === "dark" ? "text-white" : "text-black"
+                            }`}
+                        />
+                    </motion.a>
+                    <motion.a
+                        href="https://www.linkedin.com/in/nicolas-sung-898031273/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`p-4 rounded-full transition-colors ${
+                            theme === "dark"
+                                ? "bg-black/20 hover:bg-black/30"
+                                : "bg-gray-100 hover:bg-gray-200"
+                        }`}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <FaLinkedin
+                            className={`w-8 h-8 sm:w-10 sm:h-10 ${
+                                theme === "dark" ? "text-white" : "text-black"
+                            }`}
+                        />
+                    </motion.a>
+                </div>
+            </motion.div>
         </section>
     );
 }

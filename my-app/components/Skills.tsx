@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     SiHtml5,
     SiCss3,
@@ -118,9 +118,23 @@ export default function Skills() {
     const [activeCategory, setActiveCategory] = useState<
         "development" | "design"
     >("development");
+    const [theme, setTheme] = useState("dark");
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        setTheme(savedTheme);
+
+        const handleThemeChange = () => {
+            const newTheme = localStorage.getItem("theme") || "dark";
+            setTheme(newTheme);
+        };
+
+        window.addEventListener("storage", handleThemeChange);
+        return () => window.removeEventListener("storage", handleThemeChange);
+    }, []);
 
     const renderSkillsSection = (skills: typeof webDevelopmentSkills) => (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-10 ">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-10">
             {skills.map((skill, index) => (
                 <motion.div
                     key={skill.name}
@@ -135,7 +149,9 @@ export default function Skills() {
                     whileHover={{ scale: 1.05 }}
                 >
                     <motion.div
-                        className="text-white"
+                        className={
+                            theme === "dark" ? "text-white" : "text-black"
+                        }
                         whileHover={{
                             rotate: 360,
                             scale: 1.2,
@@ -148,7 +164,11 @@ export default function Skills() {
                     >
                         <skill.icon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />
                     </motion.div>
-                    <span className="text-xs sm:text-sm font-medium text-center">
+                    <span
+                        className={`text-xs sm:text-sm font-medium text-center ${
+                            theme === "dark" ? "text-white" : "text-black"
+                        }`}
+                    >
                         {skill.name}
                     </span>
                 </motion.div>
@@ -159,14 +179,15 @@ export default function Skills() {
     return (
         <motion.section
             id="skills"
-            className="w-11/12 sm:w-5/6 mx-auto flex flex-col gap-10 sm:gap-16 lg:gap-20 py-10 sm:py-16"
+            className={`w-11/12 sm:w-5/6 mx-auto flex flex-col gap-10 sm:gap-16 lg:gap-20 py-10 sm:py-16 ${
+                theme === "dark" ? "text-white" : "text-black"
+            }`}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
         >
             <motion.h2
-                id="skills"
                 className="text-4xl sm:text-6xl font-extrabold text-center"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -191,9 +212,21 @@ export default function Skills() {
                         onClick={() => setActiveCategory("development")}
                         className={`text-base sm:text-lg lg:text-xl font-semibold transition-all ${
                             activeCategory === "development"
-                                ? "text-white after:w-full"
-                                : "text-gray-400 hover:text-gray-200 after:w-0"
-                        } relative after:absolute after:h-0.5 after:bg-white after:left-0 after:-bottom-2 after:transition-all after:duration-300`}
+                                ? theme === "dark"
+                                    ? "text-white"
+                                    : "text-black"
+                                : theme === "dark"
+                                ? "text-gray-400 hover:text-gray-200"
+                                : "text-gray-600 hover:text-gray-800"
+                        } relative after:absolute after:h-0.5 after:left-0 after:-bottom-2 after:transition-all after:duration-300 ${
+                            activeCategory === "development"
+                                ? "after:w-full"
+                                : "after:w-0"
+                        } ${
+                            theme === "dark"
+                                ? "after:bg-white"
+                                : "after:bg-black"
+                        }`}
                     >
                         Web Development
                     </button>
@@ -201,9 +234,21 @@ export default function Skills() {
                         onClick={() => setActiveCategory("design")}
                         className={`text-base sm:text-lg lg:text-xl font-semibold transition-all ${
                             activeCategory === "design"
-                                ? "text-white after:w-full"
-                                : "text-gray-400 hover:text-gray-200 after:w-0"
-                        } relative after:absolute after:h-0.5 after:bg-white after:left-0 after:-bottom-2 after:transition-all after:duration-300`}
+                                ? theme === "dark"
+                                    ? "text-white"
+                                    : "text-black"
+                                : theme === "dark"
+                                ? "text-gray-400 hover:text-gray-200"
+                                : "text-gray-600 hover:text-gray-800"
+                        } relative after:absolute after:h-0.5 after:left-0 after:-bottom-2 after:transition-all after:duration-300 ${
+                            activeCategory === "design"
+                                ? "after:w-full"
+                                : "after:w-0"
+                        } ${
+                            theme === "dark"
+                                ? "after:bg-white"
+                                : "after:bg-black"
+                        }`}
                     >
                         Web Design
                     </button>

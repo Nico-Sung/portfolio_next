@@ -3,46 +3,69 @@
 @tailwind utilities;
 
 :root {
-    --background: #111111;
-    --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #000000;
+    --text-color: #000000;
+    --stroke-color: #000000;
     font-family: "hk-grotesk-wide", sans-serif;
+}
+
+[data-theme="dark"] {
+    --background: #111111;
+    --foreground: #ffffff;
+    --text-color: #ffffff;
+    --stroke-color: #ffffff;
 }
 
 @font-face {
     font-family: "hk-grotesk-wide";
-    src: url("/fonts/HKGroteskWide-Black.otf") format("otf"),
-        url("/fonts/HKGroteskWide-Bold.otf") format("otf"),
-        url("/fonts/HKGroteskWide-ExtraBold.otf") format("otf"),
-        url("/fonts/HKGroteskWide-Light.otf") format("otf"),
-        url("/fonts/HKGroteskWide-Medium.otf") format("otf"),
-        url("/fonts/HKGroteskWide-Regular.otf") format("otf"),
-        url("/fonts/HKGroteskWide-SemiBold.otf") format("otf");
-    font-weight: normal;
+    src: url("/fonts/HKGroteskWide-Bold.woff2") format("woff2");
+    font-weight: 700;
     font-style: normal;
+    font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
+@font-face {
+    font-family: "hk-grotesk-wide";
+    src: url("/fonts/HKGroteskWide-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "hk-grotesk-wide";
+    src: url("/fonts/HKGroteskWide-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 body {
-    color: var(--foreground);
+    color: var(--text-color);
     background: var(--background);
     font-family: "hk-grotesk-wide" !important;
 }
 
-.perspective-1000 {
+.perspective {
     perspective: 1000px;
 }
 
-@keyframes rotate3D {
-    from {
+@keyframes rotate {
+    0% {
         transform: rotateY(0deg);
     }
-    to {
+    100% {
         transform: rotateY(360deg);
     }
+}
+
+.rotate-animation {
+    animation: rotate 20s linear infinite;
+}
+
+/* Styles pour le texte SUNG */
+.text-stroke {
+    -webkit-text-stroke: 2px var(--stroke-color);
+    color: transparent;
 }

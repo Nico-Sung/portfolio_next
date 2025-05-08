@@ -1,10 +1,25 @@
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { User, Layers, Briefcase, Mail, Folder } from "lucide-react";
 import handleScroll from "../utils/handleScroll";
 
 export default function BottomNavigation() {
     const [active, setActive] = useState("home");
+    const [theme, setTheme] = useState("dark");
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        setTheme(savedTheme);
+
+        const handleThemeChange = () => {
+            const newTheme = localStorage.getItem("theme") || "dark";
+            setTheme(newTheme);
+        };
+
+        window.addEventListener("storage", handleThemeChange);
+        return () => window.removeEventListener("storage", handleThemeChange);
+    }, []);
 
     const navItems = [
         { id: "about-me", icon: <User />, label: "About" },
@@ -35,7 +50,11 @@ export default function BottomNavigation() {
     }, [navItems]);
 
     return (
-        <nav className="fixed bottom-6 left-0 right-0 bg-zinc-900 opacity-95 mx-8 rounded-full text-white flex justify-around items-center py-3 md:hidden shadow-lg z-[9999] ">
+        <nav
+            className={`fixed bottom-6 left-0 right-0 bg-black/20 backdrop-blur-sm mx-8 rounded-full flex justify-around items-center py-3 md:hidden shadow-lg z-[9999] ${
+                theme === "dark" ? "text-white" : "text-black"
+            }`}
+        >
             {navItems.map((item) => (
                 <motion.button
                     key={item.id}

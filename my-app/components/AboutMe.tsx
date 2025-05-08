@@ -1,14 +1,33 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import handleScroll from "../utils/handleScroll";
 import Tilt from "../@/animation/tilt";
 
 export default function AboutMe() {
+    const [theme, setTheme] = useState("dark");
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        setTheme(savedTheme);
+
+        const handleThemeChange = () => {
+            const newTheme = localStorage.getItem("theme") || "dark";
+            setTheme(newTheme);
+        };
+
+        window.addEventListener("storage", handleThemeChange);
+        return () => window.removeEventListener("storage", handleThemeChange);
+    }, []);
+
     return (
         <section
             id="about-me"
-            className="flex flex-col justify-center items-center text-center text-white min-h-screen w-11/12 sm:w-5/6 mx-auto py-16 px-4 sm:px-12"
+            className={`flex flex-col justify-center items-center text-center min-h-screen w-11/12 sm:w-5/6 mx-auto py-16 px-4 sm:px-12 ${
+                theme === "dark" ? "text-white" : "text-black"
+            }`}
         >
             <motion.h2
                 className="text-4xl sm:text-6xl font-extrabold mb-8 sm:mb-12"
@@ -48,7 +67,11 @@ export default function AboutMe() {
                     </motion.div>
                     <div className="flex flex-col items-center md:items-start">
                         <motion.p
-                            className="text-base sm:text-lg max-w-xl text-justify sm:text-center md:text-left mb-8"
+                            className={`text-base sm:text-lg max-w-xl text-justify sm:text-center md:text-left mb-8 ${
+                                theme === "dark"
+                                    ? "text-gray-300"
+                                    : "text-gray-700"
+                            }`}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -76,7 +99,11 @@ export default function AboutMe() {
                             transition={{ duration: 0.8, delay: 0.3 }}
                         >
                             <motion.div
-                                className="group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-lg backdrop-blur-sm border border-white/10 hover:border-white/30"
+                                className={`group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-lg backdrop-blur-sm border ${
+                                    theme === "dark"
+                                        ? "border-white/10 hover:border-white/30"
+                                        : "border-black/10 hover:border-black/30"
+                                }`}
                                 whileHover={{ scale: 1.05, rotate: 2 }}
                                 whileTap={{ scale: 0.95 }}
                             >
@@ -88,7 +115,11 @@ export default function AboutMe() {
                                 </span>
                             </motion.div>
                             <motion.div
-                                className="group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-lg backdrop-blur-sm border border-white/10 hover:border-white/30"
+                                className={`group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-lg backdrop-blur-sm border ${
+                                    theme === "dark"
+                                        ? "border-white/10 hover:border-white/30"
+                                        : "border-black/10 hover:border-black/30"
+                                }`}
                                 whileHover={{ scale: 1.05, rotate: -2 }}
                                 whileTap={{ scale: 0.95 }}
                             >
@@ -100,7 +131,11 @@ export default function AboutMe() {
                                 </span>
                             </motion.div>
                             <motion.div
-                                className="group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg backdrop-blur-sm border border-white/10 hover:border-white/30"
+                                className={`group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg backdrop-blur-sm border ${
+                                    theme === "dark"
+                                        ? "border-white/10 hover:border-white/30"
+                                        : "border-black/10 hover:border-black/30"
+                                }`}
                                 whileHover={{ scale: 1.05, rotate: 2 }}
                                 whileTap={{ scale: 0.95 }}
                             >
@@ -112,7 +147,11 @@ export default function AboutMe() {
                                 </span>
                             </motion.div>
                             <motion.div
-                                className="group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-red-500/20 to-pink-500/20 rounded-lg backdrop-blur-sm border border-white/10 hover:border-white/30"
+                                className={`group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-red-500/20 to-pink-500/20 rounded-lg backdrop-blur-sm border ${
+                                    theme === "dark"
+                                        ? "border-white/10 hover:border-white/30"
+                                        : "border-black/10 hover:border-black/30"
+                                }`}
                                 whileHover={{ scale: 1.05, rotate: -2 }}
                                 whileTap={{ scale: 0.95 }}
                             >
@@ -124,7 +163,11 @@ export default function AboutMe() {
                                 </span>
                             </motion.div>
                             <motion.div
-                                className="group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-lg backdrop-blur-sm border border-white/10 hover:border-white/30"
+                                className={`group flex flex-col items-center gap-1 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-lg backdrop-blur-sm border ${
+                                    theme === "dark"
+                                        ? "border-white/10 hover:border-white/30"
+                                        : "border-black/10 hover:border-black/30"
+                                }`}
                                 whileHover={{ scale: 1.05, rotate: 2 }}
                                 whileTap={{ scale: 0.95 }}
                             >
@@ -146,7 +189,11 @@ export default function AboutMe() {
                             <a
                                 href="#contact"
                                 onClick={(e) => handleScroll(e, "contact")}
-                                className="px-4 py-2 text-white rounded border border-white mb-4 sm:mb-0  hover:bg-white hover:text-black transition-colors duration-300 z-[999]"
+                                className={`px-4 py-2 rounded border transition-colors duration-300 z-[999] ${
+                                    theme === "dark"
+                                        ? "text-white border-white hover:bg-white hover:text-black"
+                                        : "text-black border-black hover:bg-black hover:text-white"
+                                }`}
                             >
                                 Contact me
                             </a>
@@ -157,11 +204,13 @@ export default function AboutMe() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <Image
-                                        src="/github.png"
-                                        alt="github"
-                                        width={40}
-                                        height={40}
+                                    <FaGithub
+                                        size={40}
+                                        className={
+                                            theme === "dark"
+                                                ? "text-white"
+                                                : "text-black"
+                                        }
                                     />
                                 </Link>
                                 <Link
@@ -170,11 +219,13 @@ export default function AboutMe() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <Image
-                                        src="/linkedin.png"
-                                        alt="linkedin"
-                                        width={40}
-                                        height={40}
+                                    <FaLinkedin
+                                        size={40}
+                                        className={
+                                            theme === "dark"
+                                                ? "text-white"
+                                                : "text-black"
+                                        }
                                     />
                                 </Link>
                             </div>

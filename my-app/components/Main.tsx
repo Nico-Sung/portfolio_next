@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import {
     SiHtml5,
     SiCss3,
@@ -20,6 +20,8 @@ export default function Main() {
     const name = "NICOLAS".split("");
     const lastName = "SUNG".split("");
     const job = "Full Stack Developer".split("");
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [theme, setTheme] = useState("dark");
 
     // Technologies avec icônes et couleurs officielles
     const technologies = [
@@ -37,6 +39,34 @@ export default function Main() {
         { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
         { name: "Figma", icon: SiFigma, color: "#F24E1E" },
     ];
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        setTheme(savedTheme);
+
+        const handleThemeChange = () => {
+            const newTheme = localStorage.getItem("theme") || "dark";
+            setTheme(newTheme);
+        };
+
+        window.addEventListener("storage", handleThemeChange);
+        return () => window.removeEventListener("storage", handleThemeChange);
+    }, []);
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            setMousePosition({
+                x: e.clientX,
+                y: e.clientY,
+            });
+        };
+
+        window.addEventListener("mousemove", handleMouseMove);
+
+        return () => {
+            window.removeEventListener("mousemove", handleMouseMove);
+        };
+    }, []);
 
     return (
         <motion.section
@@ -78,7 +108,7 @@ export default function Main() {
                             key={i}
                             className="text-6xl sm:text-9xl lg:text-9xl "
                             style={{
-                                WebkitTextStroke: "1px white",
+                                WebkitTextStroke: "1px var(--stroke-color)",
                                 color: "transparent",
                                 fontFamily:
                                     "var(--font-hk-grotesk-wide-extra-bold )",
@@ -111,7 +141,13 @@ export default function Main() {
                 download
                 className="mt-8 mb-16 inline-block"
             >
-                <button className="px-4 py-2 text-white text-xs sm:text-xl  rounded border border-white hover:bg-white hover:text-black transition-colors duration-300">
+                <button
+                    className={`px-4 py-2 text-current text-xs sm:text-xl rounded border border-current transition-colors duration-300 ${
+                        theme === "dark"
+                            ? "hover:bg-white hover:text-black"
+                            : "hover:bg-black hover:text-white"
+                    }`}
+                >
                     Download my CV
                 </button>
             </a>
@@ -128,8 +164,21 @@ function InfiniteMarquee({
     technologies: { name: string; icon: React.ElementType; color: string }[];
 }) {
     const marqueeRef = useRef<HTMLDivElement | null>(null);
+    const [theme, setTheme] = useState("dark");
 
-    // Auto-scroll infini
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        setTheme(savedTheme);
+
+        const handleThemeChange = () => {
+            const newTheme = localStorage.getItem("theme") || "dark";
+            setTheme(newTheme);
+        };
+
+        window.addEventListener("storage", handleThemeChange);
+        return () => window.removeEventListener("storage", handleThemeChange);
+    }, []);
+
     useEffect(() => {
         const marquee = marqueeRef.current;
         let animationFrame: number;
@@ -147,7 +196,6 @@ function InfiniteMarquee({
         return () => cancelAnimationFrame(animationFrame);
     }, []);
 
-    // Drag to scroll
     useEffect(() => {
         const marquee = marqueeRef.current;
         let isDown = false;
@@ -188,7 +236,6 @@ function InfiniteMarquee({
         };
     }, []);
 
-    // Double la liste pour l'effet infini
     const items = [...technologies, ...technologies];
 
     return (
@@ -207,15 +254,18 @@ function InfiniteMarquee({
                         <Icon
                             className="text-4xl mb-2"
                             style={{
-                                color: "#fff",
-                                filter: `drop-shadow(0 0 8px ${tech.color}) drop-shadow(0 0 16px ${tech.color})`,
+                                color: theme === "dark" ? "#fff" : "#2563eb",
+                                filter:
+                                    theme === "dark"
+                                        ? `drop-shadow(0 0 8px ${tech.color}) drop-shadow(0 0 16px ${tech.color})`
+                                        : `drop-shadow(0 0 4px ${tech.color}40) drop-shadow(0 0 8px ${tech.color}40)`,
                                 transition: "filter 0.3s",
                             }}
                         />
                         <span
                             className="text-xs font-bold mt-1"
                             style={{
-                                color: "#fff",
+                                color: theme === "dark" ? "#fff" : "#2563eb",
                                 filter: "none",
                                 transition: "filter 0.3s",
                             }}
