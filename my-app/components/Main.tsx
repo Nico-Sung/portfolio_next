@@ -1,20 +1,20 @@
 import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import {
-    SiHtml5,
-    SiCss3,
-    SiJavascript,
-    SiTypescript,
-    SiReact,
-    SiNextdotjs,
-    SiNodedotjs,
-    SiExpress,
-    SiPython,
-    SiMysql,
-    SiPrisma,
-    SiTailwindcss,
-    SiFigma,
-} from "react-icons/si";
+    FaCode,
+    FaServer,
+    FaLayerGroup,
+    FaDatabase,
+    FaTools,
+    FaPalette,
+    FaMobileAlt,
+    FaFileCode,
+    FaJs,
+    FaHtml5,
+    FaCss3Alt,
+    FaPython,
+    FaNetworkWired,
+} from "react-icons/fa";
 
 export default function Main() {
     const name = "NICOLAS".split("");
@@ -22,21 +22,20 @@ export default function Main() {
     const job = "Full Stack Developer".split("");
     const [theme, setTheme] = useState("dark");
 
-    // Technologies avec icônes et couleurs officielles
     const technologies = [
-        { name: "HTML", icon: SiHtml5, color: "#E34F26" },
-        { name: "CSS", icon: SiCss3, color: "#1572B6" },
-        { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-        { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-        { name: "React", icon: SiReact, color: "#61DAFB" },
-        { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
-        { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-        { name: "Express", icon: SiExpress, color: "#000000" },
-        { name: "Python", icon: SiPython, color: "#3776AB" },
-        { name: "MySQL", icon: SiMysql, color: "#4479A1" },
-        { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
-        { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
-        { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+        { name: "#Frontend", icon: FaCode, color: "#61DAFB" },
+        { name: "#Backend", icon: FaServer, color: "#339933" },
+        { name: "#Full Stack", icon: FaLayerGroup, color: "#000000" },
+        { name: "#API", icon: FaNetworkWired, color: "#000000" },
+        { name: "#Database", icon: FaDatabase, color: "#4479A1" },
+        { name: "#ORM", icon: FaTools, color: "#2D3748" },
+        { name: "#UI/UX", icon: FaPalette, color: "#F24E1E" },
+        { name: "#Responsive", icon: FaMobileAlt, color: "#06B6D4" },
+        { name: "#TypeScript", icon: FaFileCode, color: "#3178C6" },
+        { name: "#JavaScript", icon: FaJs, color: "#F7DF1E" },
+        { name: "#HTML5", icon: FaHtml5, color: "#E34F26" },
+        { name: "#CSS3", icon: FaCss3Alt, color: "#1572B6" },
+        { name: "#Python", icon: FaPython, color: "#3776AB" },
     ];
 
     useEffect(() => {
@@ -135,8 +134,6 @@ export default function Main() {
                     Download my CV
                 </button>
             </a>
-
-            {/* Marquee dynamique avec icônes react-icons et couleurs */}
             <InfiniteMarquee technologies={technologies} />
         </motion.section>
     );

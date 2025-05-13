@@ -153,7 +153,6 @@ export default function Skills() {
                             theme === "dark" ? "text-white" : "text-black"
                         }
                         whileHover={{
-                            rotate: 360,
                             scale: 1.2,
                             color: "#3B82F6",
                         }}

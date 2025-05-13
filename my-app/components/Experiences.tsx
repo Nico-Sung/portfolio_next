@@ -297,7 +297,7 @@ function TimelineItem({
                     </motion.div>
                 )}
             </div>
-            {/* Mobile version: always full width */}
+            {/* Mobile version: toujours full width */}
             <div className="lg:hidden w-full my-8">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
