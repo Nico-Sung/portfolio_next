@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
 import { User, Layers, Briefcase, Mail, Folder } from "lucide-react";
-import handleScroll from "../utils/handleScroll";
+import handleScroll from "@/lib/handleScroll";
 
 export default function BottomNavigation() {
     const [active, setActive] = useState("home");

@@ -1,7 +1,7 @@
+import ScrollToTop from "@/components/ui/ScrollToTop";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Analytics } from "@vercel/analytics/next";
-import ScrollToTop from "../components/ScrollToTop";
 import "./globals.css";
 
 const hkGroteskWideExtraBold = localFont({

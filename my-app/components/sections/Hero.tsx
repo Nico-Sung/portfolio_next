@@ -1,42 +1,13 @@
+import { HERO_TECHNOLOGIES } from "@/data";
 import { motion } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
-import {
-    FaCode,
-    FaServer,
-    FaLayerGroup,
-    FaDatabase,
-    FaTools,
-    FaPalette,
-    FaMobileAlt,
-    FaFileCode,
-    FaJs,
-    FaHtml5,
-    FaCss3Alt,
-    FaPython,
-    FaNetworkWired,
-} from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+import { IconType } from "react-icons";
 
-export default function Main() {
+export default function Hero() {
     const name = "NICOLAS".split("");
     const lastName = "SUNG".split("");
     const job = "Full Stack Developer".split("");
     const [theme, setTheme] = useState("dark");
-
-    const technologies = [
-        { name: "#Frontend", icon: FaCode, color: "#61DAFB" },
-        { name: "#Backend", icon: FaServer, color: "#339933" },
-        { name: "#Full Stack", icon: FaLayerGroup, color: "#000000" },
-        { name: "#API", icon: FaNetworkWired, color: "#000000" },
-        { name: "#Database", icon: FaDatabase, color: "#4479A1" },
-        { name: "#ORM", icon: FaTools, color: "#2D3748" },
-        { name: "#UI/UX", icon: FaPalette, color: "#F24E1E" },
-        { name: "#Responsive", icon: FaMobileAlt, color: "#06B6D4" },
-        { name: "#TypeScript", icon: FaFileCode, color: "#3178C6" },
-        { name: "#JavaScript", icon: FaJs, color: "#F7DF1E" },
-        { name: "#HTML5", icon: FaHtml5, color: "#E34F26" },
-        { name: "#CSS3", icon: FaCss3Alt, color: "#1572B6" },
-        { name: "#Python", icon: FaPython, color: "#3776AB" },
-    ];
 
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme") || "dark";
@@ -56,7 +27,7 @@ export default function Main() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-center py-64 lg:min-h-screen relative "
+            className="text-center py-64 lg:min-h-screen relative"
         >
             <div>
                 <div>
@@ -64,15 +35,12 @@ export default function Main() {
                         <motion.span
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{
-                                duration: 0.25,
-                                delay: i / 10,
-                            }}
+                            transition={{ duration: 0.25, delay: i / 10 }}
                             key={i}
                             className="text-6xl sm:text-9xl lg:text-9xl"
                             style={{
                                 fontFamily:
-                                    "var(--font-hk-grotesk-wide-extra-bold )",
+                                    "var(--font-hk-grotesk-wide-extra-bold)",
                             }}
                         >
                             {el}
@@ -89,12 +57,12 @@ export default function Main() {
                                 delay: (name.length + i) / 10,
                             }}
                             key={i}
-                            className="text-6xl sm:text-9xl lg:text-9xl "
+                            className="text-6xl sm:text-9xl lg:text-9xl"
                             style={{
                                 WebkitTextStroke: "1px var(--stroke-color)",
                                 color: "transparent",
                                 fontFamily:
-                                    "var(--font-hk-grotesk-wide-extra-bold )",
+                                    "var(--font-hk-grotesk-wide-extra-bold)",
                             }}
                         >
                             {el}
@@ -111,7 +79,7 @@ export default function Main() {
                                 delay: (name.length + i) / 10,
                             }}
                             key={i}
-                            className="text-10 sm:text-2xl lg:text-2xl  mt-4 "
+                            className="text-10 sm:text-2xl lg:text-2xl mt-4"
                         >
                             {el}
                         </motion.span>
@@ -134,7 +102,7 @@ export default function Main() {
                     Download my CV
                 </button>
             </a>
-            <InfiniteMarquee technologies={technologies} />
+            <InfiniteMarquee technologies={HERO_TECHNOLOGIES} />
         </motion.section>
     );
 }
@@ -142,7 +110,7 @@ export default function Main() {
 function InfiniteMarquee({
     technologies,
 }: {
-    technologies: { name: string; icon: React.ElementType; color: string }[];
+    technologies: { name: string; icon: IconType; color: string }[];
 }) {
     const marqueeRef = useRef<HTMLDivElement | null>(null);
     const [theme, setTheme] = useState("dark");

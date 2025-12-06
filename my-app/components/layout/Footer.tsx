@@ -1,4 +1,4 @@
-import handleScroll from "../utils/handleScroll";
+import handleScroll from "@/lib/handleScroll";
 
 export default function Footer() {
     return (

@@ -1,8 +1,7 @@
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { useScroll, useMotionValueEvent } from "framer-motion";
 import { useEffect, useState } from "react";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../ui/ThemeToggle";
 
 export default function Header() {
     const { scrollY } = useScroll();

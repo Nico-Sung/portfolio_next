@@ -1,100 +1,18 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import { PROJECTS } from "@/data";
+import { Project } from "@/types";
 import { motion, useScroll } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import {
-    SiNodedotjs,
-    SiExpress,
-    SiPrisma,
-    SiTypescript,
-    SiReact,
-    SiPhp,
-    SiMysql,
-    SiNextdotjs,
-    SiTailwindcss,
-    SiGithub,
-    SiHtml5,
-    SiCss3,
-} from "react-icons/si";
-
-const projects = [
-    {
-        title: "Harry Potter Card",
-        image: "/projects/projet1/capture-ecran-2025-02-26-11-40-48.png",
-        description:
-            "A website allowing you to collect cards from the Harry Potter universe. This project was carried out with Node.js, Express.js and Prisma.",
-        github: "https://github.com/Nico-Sung/Harry_Potter_Card",
-        id: "1",
-        technologies: [
-            { name: "Node.js", icon: SiNodedotjs },
-            { name: "Express.js", icon: SiExpress },
-            { name: "Prisma", icon: SiPrisma },
-            { name: "HTML", icon: SiHtml5 },
-            { name: "CSS", icon: SiCss3 },
-        ],
-    },
-    {
-        title: "Santa Ski",
-        image: "/projects/projet2/capture-ecran-2025-02-26-11-42-55.png",
-        description:
-            "A school project which aims to encourage disadvantaged children to go on ski holidays for free. This project combines a dynamic frontend and a robust backend to provide an immersive experience.",
-        github: "https://github.com/Nico-Sung/SantaSki",
-        id: "2",
-        technologies: [
-            { name: "React", icon: SiReact },
-            { name: "Node.js", icon: SiNodedotjs },
-            { name: "Express.js", icon: SiExpress },
-            { name: "TypeScript", icon: SiTypescript },
-        ],
-    },
-    {
-        title: "Pokemon Fight",
-        image: "/projects/projet3/capture-ecran-2025-02-26-11-49-33.png",
-        description:
-            "A little project to learn PHP. It includes a PHP interface allowing the display of Pokémon with their characteristics.",
-        github: "https://github.com/Nico-Sung/pokemon_pdo",
-        id: "3",
-        technologies: [
-            { name: "PHP", icon: SiPhp },
-            { name: "MySQL", icon: SiMysql },
-        ],
-    },
-    {
-        title: "To do list",
-        image: "/projects/projet4/capture-ecran-2025-02-26-13-32-09.png",
-        description:
-            "This project is a task management application (To-Do List) built in TypeScript",
-        github: "https://github.com/Nico-Sung/todolist_ts",
-        id: "4",
-        technologies: [
-            { name: "TypeScript", icon: SiTypescript },
-            { name: "React", icon: SiReact },
-        ],
-    },
-    {
-        title: "IFT",
-        image: "/projects/projet5/capture-ecran-2025-02-26-13-53-54.png",
-        description:
-            "Team project with the IFT of De Vinci (Institute for Future Technologies) which aims to develop a virtual gallery presenting technological innovations with a digital label system.",
-        github: "https://github.com/Nico-Sung/BAP_18",
-        id: "5",
-        technologies: [
-            { name: "Next.js", icon: SiNextdotjs },
-            { name: "Tailwind CSS", icon: SiTailwindcss },
-            { name: "Node.js", icon: SiNodedotjs },
-            { name: "Express.js", icon: SiExpress },
-            { name: "Prisma", icon: SiPrisma },
-        ],
-    },
-];
+import { SiGithub } from "react-icons/si";
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Projects() {
     const { scrollYProgress } = useScroll();
     const [scrollValue, setScrollValue] = useState(0);
-    const [selectedProject, setSelectedProject] = useState<
-        (typeof projects)[0] | null
-    >(null);
+    const [selectedProject, setSelectedProject] = useState<Project | null>(
+        null
+    );
 
     useEffect(() => {
         return scrollYProgress.onChange((latest) => {
@@ -102,7 +20,7 @@ export default function Projects() {
         });
     }, [scrollYProgress]);
 
-    const handleProjectClick = (project: (typeof projects)[0]) => {
+    const handleProjectClick = (project: Project) => {
         setSelectedProject(project);
     };
 
@@ -125,9 +43,7 @@ export default function Projects() {
                 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold w-11/12 sm:w-5/6 mx-auto top-0 transform -translate-x-1/2 z-0"
                 animate={{ y: scrollValue * 100 }}
                 transition={{ duration: 1 }}
-                style={{
-                    fontFamily: "var(--font-hk-grotesk-wide-extra-bold)",
-                }}
+                style={{ fontFamily: "var(--font-hk-grotesk-wide-extra-bold)" }}
             >
                 PROJECTS
             </motion.h2>
@@ -141,7 +57,7 @@ export default function Projects() {
                         centeredSlides={false}
                         className="w-full relative z-10"
                     >
-                        {projects.map((project, index) => (
+                        {PROJECTS.map((project, index) => (
                             <SwiperSlide key={index}>
                                 <motion.div
                                     whileHover={{ scale: 1.05 }}
@@ -177,7 +93,7 @@ export default function Projects() {
                     </Swiper>
                 </div>
                 <div className="block lg:hidden grid-cols-1 sm:w-5/6 gap-8 my-auto mx-auto p-4 rounded-lg">
-                    {projects.map((project, index) => (
+                    {PROJECTS.map((project, index) => (
                         <motion.div
                             key={index}
                             className="cursor-pointer mb-6 flex flex-col bg-zinc-900 p-4 rounded-lg z-10"
@@ -209,7 +125,6 @@ export default function Projects() {
                 </div>
             </div>
 
-            {/* Modal */}
             {selectedProject && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
                     <div className="bg-zinc-900 rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
@@ -237,7 +152,6 @@ export default function Projects() {
                             {selectedProject.description}
                         </p>
 
-                        {/* Technologies */}
                         <div className="mb-6">
                             <h4 className="text-lg font-semibold text-white mb-2">
                                 Technologies used :

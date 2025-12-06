@@ -1,10 +1,10 @@
+import handleScroll from "@/lib/handleScroll";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import handleScroll from "../utils/handleScroll";
-import Tilt from "../@/animation/tilt";
+import Tilt from "../ui/Tilt";
 
 export default function AboutMe() {
     const [theme, setTheme] = useState("dark");

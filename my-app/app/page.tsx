@@ -1,17 +1,18 @@
 "use client";
-import Cursor from "@/components/Cursor";
-import Header from "@/components/Header";
-import HeaderMobile from "@/components/HeaderMobile";
-import Main from "@/components/Main";
-import AboutMe from "@/components/AboutMe";
-import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import HeaderMobile from "@/components/layout/HeaderMobile";
+import About from "@/components/sections/About";
+import Contact from "@/components/sections/Contact";
+import Experiences from "@/components/sections/Experiences";
+import Hero from "@/components/sections/Hero";
+import Projects from "@/components/sections/Projects";
+import Skills from "@/components/sections/Skills";
+import Cursor from "@/components/ui/Cursor";
+
 import { motion, useScroll } from "framer-motion";
-import "swiper/css";
 import { useEffect, useState } from "react";
-import Skills from "@/components/Skills";
-import Experiences from "@/components/Experiences";
+import "swiper/css";
 
 export default function Home() {
     const { scrollY } = useScroll();
@@ -38,15 +39,18 @@ export default function Home() {
                 style={{ transform: `translateY(${scrollValue * 0.2}px)` }}
                 whileTap={{ opacity: 0 }}
             ></motion.div>
+
             <Cursor />
             <Header />
             <HeaderMobile />
-            <Main />
-            <AboutMe />
+
+            <Hero />
+            <About />
             <Experiences />
             <Skills />
             <Projects />
             <Contact />
+
             <Footer />
         </main>
     );
