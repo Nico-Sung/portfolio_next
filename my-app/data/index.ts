@@ -53,12 +53,27 @@ export const HERO_TECHNOLOGIES = [
 
 export const PROJECTS: Project[] = [
     {
+        title: "Propulse App",
+        image: "/projects/projet6/Capture d’écran 2025-12-06 à 22.34.24.png",
+        description:
+            "A Kanban-style web application designed to help people organize and track their job applications. Users can add, move, and manage their applications to optimize their job search.",
+        github: "https://github.com/Nico-Sung/propulse-app",
+        website: "https://propulse-app.vercel.app/",
+        id: "1",
+        technologies: [
+            { name: "Next.js", icon: SiNextdotjs },
+            { name: "TypeScript", icon: SiTypescript },
+            { name: "Tailwind CSS", icon: SiTailwindcss },
+            { name: "Supabase", icon: FaDatabase },
+        ],
+    },
+    {
         title: "Harry Potter Card",
         image: "/projects/projet1/capture-ecran-2025-02-26-11-40-48.png",
         description:
             "A website allowing you to collect cards from the Harry Potter universe. This project was carried out with Node.js, Express.js and Prisma.",
         github: "https://github.com/Nico-Sung/Harry_Potter_Card",
-        id: "1",
+        id: "6",
         technologies: [
             { name: "Node.js", icon: SiNodedotjs },
             { name: "Express.js", icon: SiExpress },

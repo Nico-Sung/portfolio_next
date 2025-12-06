@@ -12,6 +12,7 @@ export interface Project {
     image: string;
     description: string;
     github: string;
+    website?: string | undefined;
     technologies: Technology[];
 }
 

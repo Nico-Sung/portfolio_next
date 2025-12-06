@@ -29,6 +29,11 @@ export default function Projects() {
         window.open(url, "_blank", "noopener,noreferrer");
     };
 
+    const handleWebsiteClick = (e: React.MouseEvent, url: string) => {
+        e.stopPropagation();
+        window.open(url, "_blank", "noopener,noreferrer");
+    };
+
     const closeModal = () => {
         setSelectedProject(null);
     };
@@ -174,18 +179,40 @@ export default function Projects() {
                         </div>
 
                         <div className="flex justify-between items-center">
-                            <a
-                                href={selectedProject.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-blue-300 hover:text-blue-400"
-                                onClick={(e) =>
-                                    handleGithubClick(e, selectedProject.github)
-                                }
-                            >
-                                <SiGithub className="w-5 h-5" />
-                                <span>See in GitHub</span>
-                            </a>
+                            <div className="flex space-x-4">
+                                <a
+                                    href={selectedProject.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 text-blue-300 hover:text-blue-400"
+                                    onClick={(e) =>
+                                        handleGithubClick(
+                                            e,
+                                            selectedProject.github
+                                        )
+                                    }
+                                >
+                                    <SiGithub className="w-5 h-5" />
+                                    <span>See in GitHub</span>
+                                </a>
+                                {selectedProject.website && (
+                                    <a
+                                        href={selectedProject.website}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-2 text-blue-300 hover:text-blue-400"
+                                        onClick={(e) =>
+                                            handleWebsiteClick(
+                                                e,
+                                                selectedProject.website!
+                                            )
+                                        }
+                                    >
+                                        <SiGithub className="w-5 h-5" />
+                                        <span>See the website</span>
+                                    </a>
+                                )}
+                            </div>
                             <button
                                 onClick={closeModal}
                                 className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
