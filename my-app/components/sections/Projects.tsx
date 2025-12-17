@@ -13,12 +13,26 @@ export default function Projects() {
     const [selectedProject, setSelectedProject] = useState<Project | null>(
         null
     );
+    const [theme, setTheme] = useState("dark");
 
     useEffect(() => {
         return scrollYProgress.onChange((latest) => {
             setScrollValue(latest);
         });
     }, [scrollYProgress]);
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        setTheme(savedTheme);
+
+        const handleThemeChange = () => {
+            const newTheme = localStorage.getItem("theme") || "dark";
+            setTheme(newTheme);
+        };
+
+        window.addEventListener("storage", handleThemeChange);
+        return () => window.removeEventListener("storage", handleThemeChange);
+    }, []);
 
     const handleProjectClick = (project: Project) => {
         setSelectedProject(project);
@@ -45,7 +59,9 @@ export default function Projects() {
         >
             <motion.h2
                 id="projects-title"
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold w-11/12 sm:w-5/6 mx-auto top-0 transform -translate-x-1/2 z-0"
+                className={`text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold w-11/12 sm:w-5/6 mx-auto top-0 transform -translate-x-1/2 z-0 ${
+                    theme === "dark" ? "text-white" : "text-black"
+                }`}
                 animate={{ y: scrollValue * 100 }}
                 transition={{ duration: 1 }}
                 style={{ fontFamily: "var(--font-hk-grotesk-wide-extra-bold)" }}
@@ -80,15 +96,37 @@ export default function Projects() {
                                         initial={{ opacity: 0 }}
                                         whileHover={{ opacity: 1 }}
                                         transition={{ duration: 0.3 }}
-                                        className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-75 opacity-0 hover:opacity-100 transition-opacity duration-300 p-6 text-center"
+                                        className={`absolute inset-0 flex flex-col justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300 p-6 text-center ${
+                                            theme === "dark"
+                                                ? "bg-black bg-opacity-75"
+                                                : "bg-white bg-opacity-90"
+                                        }`}
                                     >
-                                        <h3 className="text-2xl font-semibold">
+                                        <h3
+                                            className={`text-2xl font-semibold ${
+                                                theme === "dark"
+                                                    ? "text-white"
+                                                    : "text-black"
+                                            }`}
+                                        >
                                             {project.title}
                                         </h3>
-                                        <p className="text-gray-200 mt-2">
+                                        <p
+                                            className={`mt-2 ${
+                                                theme === "dark"
+                                                    ? "text-gray-200"
+                                                    : "text-gray-700"
+                                            }`}
+                                        >
                                             {project.description}
                                         </p>
-                                        <p className="text-blue-300 mt-3">
+                                        <p
+                                            className={`mt-3 ${
+                                                theme === "dark"
+                                                    ? "text-blue-300"
+                                                    : "text-blue-600"
+                                            }`}
+                                        >
                                             Click here to see more
                                         </p>
                                     </motion.div>
@@ -101,7 +139,11 @@ export default function Projects() {
                     {PROJECTS.map((project, index) => (
                         <motion.div
                             key={index}
-                            className="cursor-pointer mb-6 flex flex-col bg-zinc-900 p-4 rounded-lg z-10"
+                            className={`cursor-pointer mb-6 flex flex-col p-4 rounded-lg z-10 border ${
+                                theme === "dark"
+                                    ? "bg-zinc-900 border-zinc-800"
+                                    : "bg-white border-gray-200 shadow-lg"
+                            }`}
                             onClick={() => handleProjectClick(project)}
                         >
                             <Image
@@ -111,17 +153,39 @@ export default function Projects() {
                                 height={500}
                                 className="w-full h-full object-cover rounded-t-lg"
                             />
-                            <div className="flex flex-col justify-end items-center bg-zinc-900 bg-opacity-75 p-4 rounded-b-lg">
-                                <h3 className="text-xl font-semibold text-white">
+                            <div
+                                className={`flex flex-col justify-end items-center p-4 rounded-b-lg ${
+                                    theme === "dark"
+                                        ? "bg-zinc-900"
+                                        : "bg-white"
+                                }`}
+                            >
+                                <h3
+                                    className={`text-xl font-semibold ${
+                                        theme === "dark"
+                                            ? "text-white"
+                                            : "text-black"
+                                    }`}
+                                >
                                     {project.title}
                                 </h3>
                                 <p
-                                    className="text-gray-200 mt-2"
+                                    className={`mt-2 ${
+                                        theme === "dark"
+                                            ? "text-gray-200"
+                                            : "text-gray-700"
+                                    }`}
                                     id={project.id}
                                 >
                                     {project.description}
                                 </p>
-                                <p className="text-blue-300 mt-3">
+                                <p
+                                    className={`mt-3 ${
+                                        theme === "dark"
+                                            ? "text-blue-300"
+                                            : "text-blue-600"
+                                    }`}
+                                >
                                     Click here to see more
                                 </p>
                             </div>
@@ -131,15 +195,37 @@ export default function Projects() {
             </div>
 
             {selectedProject && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                    <div className="bg-zinc-900 rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div
+                    className={`fixed inset-0 flex items-center justify-center z-50 p-4 ${
+                        theme === "dark"
+                            ? "bg-black bg-opacity-50"
+                            : "bg-black bg-opacity-30"
+                    }`}
+                >
+                    <div
+                        className={`rounded-lg p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto border ${
+                            theme === "dark"
+                                ? "bg-zinc-900 border-zinc-800"
+                                : "bg-white border-gray-200 shadow-2xl"
+                        }`}
+                    >
                         <div className="flex justify-between items-start mb-4">
-                            <h3 className="text-2xl font-semibold text-white">
+                            <h3
+                                className={`text-2xl font-semibold ${
+                                    theme === "dark"
+                                        ? "text-white"
+                                        : "text-black"
+                                }`}
+                            >
                                 {selectedProject.title}
                             </h3>
                             <button
                                 onClick={closeModal}
-                                className="text-white hover:text-gray-300"
+                                className={`${
+                                    theme === "dark"
+                                        ? "text-white hover:text-gray-300"
+                                        : "text-black hover:text-gray-600"
+                                }`}
                             >
                                 ✕
                             </button>
@@ -153,12 +239,24 @@ export default function Projects() {
                                 className="object-cover rounded-lg max-h-64 w-auto"
                             />
                         </div>
-                        <p className="text-gray-200 mb-4">
+                        <p
+                            className={`mb-4 ${
+                                theme === "dark"
+                                    ? "text-gray-200"
+                                    : "text-gray-700"
+                            }`}
+                        >
                             {selectedProject.description}
                         </p>
 
                         <div className="mb-6">
-                            <h4 className="text-lg font-semibold text-white mb-2">
+                            <h4
+                                className={`text-lg font-semibold mb-2 ${
+                                    theme === "dark"
+                                        ? "text-white"
+                                        : "text-black"
+                                }`}
+                            >
                                 Technologies used :
                             </h4>
                             <div className="flex flex-wrap gap-3">
@@ -166,10 +264,26 @@ export default function Projects() {
                                     (tech, index) => (
                                         <div
                                             key={index}
-                                            className="flex items-center gap-2 bg-zinc-800 px-3 py-1.5 rounded-full"
+                                            className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${
+                                                theme === "dark"
+                                                    ? "bg-zinc-800"
+                                                    : "bg-gray-100"
+                                            }`}
                                         >
-                                            <tech.icon className="w-4 h-4" />
-                                            <span className="text-sm text-gray-200">
+                                            <tech.icon
+                                                className={`w-4 h-4 ${
+                                                    theme === "dark"
+                                                        ? "text-white"
+                                                        : "text-black"
+                                                }`}
+                                            />
+                                            <span
+                                                className={`text-sm ${
+                                                    theme === "dark"
+                                                        ? "text-gray-200"
+                                                        : "text-gray-700"
+                                                }`}
+                                            >
                                                 {tech.name}
                                             </span>
                                         </div>
@@ -184,7 +298,11 @@ export default function Projects() {
                                     href={selectedProject.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-blue-300 hover:text-blue-400"
+                                    className={`flex items-center gap-2 ${
+                                        theme === "dark"
+                                            ? "text-blue-300 hover:text-blue-400"
+                                            : "text-blue-600 hover:text-blue-700"
+                                    }`}
                                     onClick={(e) =>
                                         handleGithubClick(
                                             e,
@@ -200,7 +318,11 @@ export default function Projects() {
                                         href={selectedProject.website}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-2 text-blue-300 hover:text-blue-400"
+                                        className={`flex items-center gap-2 ${
+                                            theme === "dark"
+                                                ? "text-blue-300 hover:text-blue-400"
+                                                : "text-blue-600 hover:text-blue-700"
+                                        }`}
                                         onClick={(e) =>
                                             handleWebsiteClick(
                                                 e,
@@ -215,7 +337,11 @@ export default function Projects() {
                             </div>
                             <button
                                 onClick={closeModal}
-                                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                                className={`px-4 py-2 rounded ${
+                                    theme === "dark"
+                                        ? "bg-blue-500 text-white hover:bg-blue-600"
+                                        : "bg-blue-600 text-white hover:bg-blue-700"
+                                }`}
                             >
                                 Close
                             </button>

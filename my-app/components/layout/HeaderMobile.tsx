@@ -53,15 +53,21 @@ export default function BottomNavigation() {
 
     return (
         <nav
-            className={`fixed bottom-6 left-0 right-0 bg-black/20 backdrop-blur-sm mx-8 rounded-full flex justify-around items-center py-3 md:hidden shadow-lg z-[9999] ${
-                theme === "dark" ? "text-white" : "text-black"
+            className={`fixed bottom-6 left-0 right-0 backdrop-blur-sm mx-8 rounded-full flex justify-around items-center py-3 md:hidden shadow-lg z-[9999] ${
+                theme === "dark"
+                    ? "bg-black/20 text-white"
+                    : "bg-white/80 text-black border border-gray-200"
             }`}
         >
             {navItems.map((item) => (
                 <motion.button
                     key={item.id}
                     className={`flex flex-col items-center gap-1 p-2 transition ${
-                        active === item.id ? "text-[#52E7D6]" : "text-gray-400"
+                        active === item.id
+                            ? "text-[#52E7D6]"
+                            : theme === "dark"
+                            ? "text-gray-400"
+                            : "text-gray-600"
                     }`}
                     whileTap={{ scale: 0.9 }}
                     onClick={(e) => {

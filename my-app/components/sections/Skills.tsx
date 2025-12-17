@@ -9,6 +9,7 @@ import {
     SiNextdotjs,
     SiNodedotjs,
     SiExpress,
+    SiNestjs,
     SiPython,
     SiMysql,
     SiSymfony,
@@ -56,6 +57,10 @@ const webDevelopmentSkills = [
     {
         name: "Express",
         icon: SiExpress,
+    },
+    {
+        name: "NestJS",
+        icon: SiNestjs,
     },
     {
         name: "Python",
