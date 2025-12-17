@@ -7,6 +7,7 @@ import {
     FaCalendarAlt,
     FaArrowRight,
 } from "react-icons/fa";
+import { IconType } from "react-icons";
 
 type Experience = {
     title: string;
@@ -14,7 +15,7 @@ type Experience = {
     summary: string;
     details: string[];
     side?: "left" | "right";
-    icon?: any;
+    icon?: IconType;
 };
 
 const experiences: Experience[] = [
